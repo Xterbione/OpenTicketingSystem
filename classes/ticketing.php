@@ -334,48 +334,9 @@ class ticketing
         }
     }
 
-      // public function addnotifybyarray ($tid)
-      // {
-      //   $data = $this->_db->get('tickets', array('Ticket_ID', '=', $tid));
-      //   // print_r($data->results());
-      //   if ($data->count() !== 0) {
-      //       foreach ($data->results() as $key1) {
-      //         $arrayraw = $key1->betrokkenen;
-      //       }
-      //     }
-      //
-      //     $array = json_decode($arrayraw);
-      //
-      //       $data = $this->_db->get('Ticket_Comments', array('Ticket_ID', '=', $tid));
-      //       // print_r($data->results());
-      //
-      //       if ($data->count() !== 0) {
-      //           foreach ($data->results() as $key) {
-      //             $array = $key->betrokkenen;
-      //
-      //
-      //             if (!in_array($key->User_ID,  ) {
-      //               # code...
-      //             }
-      //
-      //
-      //
-      //
-      //
-      //
-      //
-      //
-      //             // $creatorid = $key->User_ID;
-      //             //   $user = new user();
-      //             //  $user->find($creatorid);
-      //       } else {
-      //
-      //       }
-      //   }
-      //
-      //
-      //
-      // }
 
+
+
+    
 
 }

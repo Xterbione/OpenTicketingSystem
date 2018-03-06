@@ -23,7 +23,7 @@
             {
                   echo ' <div class="notifycontain" style=" min-height: 90px; margin: 12px; padding-top: 5px; padding-bottom: 20px;">';
                   echo '<p style="margin-bottom: -30px;">'.  htmlspecialchars($key->Notify_title, ENT_QUOTES) . '</p><br><hr></hr><br>';
-                  echo  htmlspecialchars($key->Notify_content, ENT_QUOTES);
+                  echo  $key->Notify_content;
                   echo '</div>';
                 }
               } else {
@@ -52,6 +52,39 @@
                   print_r($fields);
               }
           }
+
+
+          public function notifyprocessforticketing ($tid)
+          {
+                $array = array();
+                  // $array = $this->getbetrokkenen($tid);
+
+                $data = $this->_db->get('Ticket_Comments', array('Ticket_ID', '=', $tid));
+                // print_r($data->results());
+                    foreach ($data->results() as $key)
+                    {
+                      $uid = $key->User_ID;
+                      if (!in_array($uid, $array))
+                      {
+                          array_push($array, $uid);
+                      }
+
+                    }
+
+                    // $content = 'er is een reactie toegevoegd aan ticket:' . $tid;
+                    // $notify = new notify();
+
+                    print_r($array);
+                    $content = "new message has been added to:  <a href='ticketview.php?ticketid=" . $tid ."'> " . $tid. "</a>";
+                    foreach($array as $value){
+
+                    $this->createnotify(array(
+                        'User_ID'  => $uid,
+                        'Notify_title' => 'Nieuwe reactie!',
+                        'Notify_content' => $content
+                        ));
+                      }
+              }
 
 }
 

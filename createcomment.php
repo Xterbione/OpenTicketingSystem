@@ -4,6 +4,7 @@ require_once 'core/init.php';
   $uid = $_SESSION['UID'];
   $date = date('Y-m-d H:i:s');
   $tid = Input::get('ticketid');
+  $notify = new notify();
   $filter = new ticketing();
           $input = '';
           $input = Input::get('comment');
@@ -17,6 +18,11 @@ require_once 'core/init.php';
                   'PostDatum' => $date,
                   'Comment' => $input
                   ));
+
+
+                    $notify->notifyprocessforticketing($tid);
+
+
 
           redirect::to('ticketview.php?ticketid=' . $tid);
           } catch (Exception $e) {
