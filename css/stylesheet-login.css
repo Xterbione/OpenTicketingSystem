@@ -1,0 +1,120 @@
+body {
+  margin: 0;
+  background-color: #e1f5fe;
+}
+
+header {
+  height: 180px;
+  color: white;
+  background: #FF0082;
+  padding: 50px 15px 15px 15px;
+}
+
+.loginwindow {
+  background-color: white;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  display: block;
+  padding: -48px 40px 36px 40px;
+  width: 570px;
+  height: 626px;
+  margin: auto;
+  margin-top: -5%;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  content: center;
+}
+
+.registerwindow {
+  text-align: center;
+  background-color: white;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  padding: -48px 40px 36px 40px;
+  width: 33%;
+  margin: auto;
+  margin-top: -10%;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    height: 80%;
+
+}
+
+.contentlw {
+  text-align: center;
+  padding-top: 5px;
+}
+
+
+
+.circleimage {
+  border-radius: 360px;
+  border-width: 10px;
+  border-color: black;
+  height: 140px;
+  width: 140px;
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSftuNnjzgTi4V0H4v4TUF-2wK3be9vRdTnpE9GTShBWapCIWqP");
+  background-size: 100%;
+  margin: auto;
+  margin-top: 15px;
+}
+
+footer {
+  clear: both;
+  position: absolute;
+  bottom: 0;
+  margin-left: 15px;
+}
+
+.contentlw input {
+  text-align: center;
+  margin: auto;
+  margin-top: 43px;
+  margin-bottom: 43px;
+  width: 200px;
+  display: block;
+  border: none;
+  padding: 10px 0;
+  border-bottom: solid 1px #1abc9c;
+  background-position: -200px 0;
+  background-size: 200px 100%;
+  background-repeat: no-repeat;
+  color: #0e6252;
+}
+
+.contentregister input {
+  margin: auto;
+  margin-top: 43px;
+  margin-bottom: 43px;
+  width: 200px;
+  display: block;
+  border: none;
+  padding: 10px 0;
+  border-bottom: solid 1px #1abc9c;
+  background-position: -200px 0;
+  background-size: 200px 100%;
+  background-repeat: no-repeat;
+  color: #0e6252;
+}
+
+input:focus, input:valid {
+  box-shadow: none;
+  outline: none;
+  background-position: 0 0;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset;
+}
+
+.inputholder {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.inputholder:nth-child(2) {
+  margin-bottom: 32px;
+  vertical-align: bottom;
+}
+
+.inputholder:nth-child(3) {
+  margin-top: 0;
+}

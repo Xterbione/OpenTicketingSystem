@@ -1,0 +1,8 @@
+phpMyAdmin/*
+databasehandlers/*
+_h5ai/*
+settingss.conf
+settings.conf
+phpmyadmin/*
+core/init.php
+!.gitignore

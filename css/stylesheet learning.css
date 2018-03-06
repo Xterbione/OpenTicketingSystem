@@ -1,0 +1,92 @@
+body {
+
+margin: 0; /*removing defalt vallue*/
+
+}
+
+header {
+
+color: white;
+background: blue;
+height: 100%;
+padding: 15px 15px 15px 15px;
+}
+header h1 {
+margin: 0; /*removing default vallu*/
+display: inline; /* putting it in line */
+float: left;
+margin-top: 5px;
+
+}
+
+nav ul{
+
+display: inline; /* inline with h1 */
+margin: 0;/*removing default vallue*/
+padding: 22px;
+
+}
+
+  nav ul li {
+  background: black;
+  color: white;
+  display: inline-block; /*inline the list items*/
+list-style-type: none; /*removing the dots of the ul element*/
+padding: 5px 15px; /*top bottom left right */
+}
+
+nav ul li a {
+
+color: white;
+
+}
+
+ div.test {
+clear: both;
+     width: 200px;
+     height: 200px;
+     border: 5px solid red;
+     border-radius: 100px;
+     float: left;
+     background-image: url("download.jpg");
+
+}
+
+
+div.button-togglecircle{
+clear: both;
+  width: 200px;
+  height: 100px;
+  border: 5px solid red;
+  float: left;
+background-image: url('download.jpg');
+
+
+}
+.row:after {            /*clear all previous css rows etc */
+    clear: both;
+    content: " ";
+    display: table;
+}
+
+.row {
+
+
+}
+
+.col {
+float: left;
+background: blue;
+margin: 1%;
+width: 28%;
+padding: 1%;
+border-radius: 10px
+
+}
+
+footer {
+padding: 20px;
+  background: blue;
+clear: both; /* remove all previous rows and start mew pme;*/
+
+}
