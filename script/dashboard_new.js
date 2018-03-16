@@ -10,6 +10,8 @@ $('.notify').click(function() {
 
 $(".notifydrawer").hide();
 $(".popupwindow1").hide();
+$(".formloader").hide();
+
 
 
 //hide div outside div click
@@ -37,6 +39,10 @@ $(document).mouseup(function(e)
         //filter selector
 $('.closepopupwindow1').click(function() {
   $('.popupwindow1').hide();
+});
+
+$('.formsubmit').click(function() {
+  $('.formloader').show();
 });
 
 

@@ -25,6 +25,7 @@
      <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.pink-light_blue.min.css" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="css/material-extends.css">
+         <link rel="shortcut icon" type="image/png" href="icons/favicon.png"/>
    </head>
    <body>
      <style>
@@ -50,7 +51,9 @@
            <nav class="mdl-navigation mdl-layout--large-screen-only">
            </nav>
            <!-- notify inbox icon -->
+           <?php if ($ustatus == 1) { ?>
            <div class="material-icons mdl-badge mdl-badge--overlap notify " data-badge="<?php $notifyer->countnotify($uid); ?>">account_box </div>
+         <?php } ?>
           <!-- logout button -->
           <a href="logout.php"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
               logout
@@ -72,8 +75,11 @@
 
 
 
-              <?php include "includes/components/notifydrawer.php";
-
+              <?php
+              if ($ustatus == 1)
+              {
+              include "includes/components/notifydrawer.php";
+              }
 
 
 
@@ -105,10 +111,15 @@ if ($tstatus == 'open') {?>
         <h3>Reageren:</h3>
         <textarea name="comment" id="comment" rows="4" cols="50"></textarea><br>
         <input type="hidden" name="ticketid" id="ticketid" value="<?php echo $tid; ?>">
-        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised">
+        <button type="submit" id="formsubmit" class="formsubmit mdl-button mdl-js-button mdl-button--raised">
           plaatsen
         </button>
       </form>
+      <div id="p2" class="formloader mdl-progress mdl-js-progress mdl-progress__indeterminate" style="margin-top: 20px;">
+        <div class="formloader">
+          <br>  <p> loading.... </p>
+        </div>
+
     </div>
 
 

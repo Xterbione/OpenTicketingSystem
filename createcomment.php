@@ -5,6 +5,7 @@ require_once 'core/init.php';
   $date = date('Y-m-d H:i:s');
   $tid = Input::get('ticketid');
   $notify = new notify();
+  $user = new user();
   $filter = new ticketing();
           $input = '';
           $input = Input::get('comment');
@@ -21,6 +22,16 @@ require_once 'core/init.php';
 
 
                     $notify->notifyprocessforticketing($tid);
+
+                    $cid = $notify->getcreatorid($tid);
+                    $uid = $_SESSION['UID'];
+                  if ($uid != $cid) {
+                    $user->find($creatorid);
+                    $mailto = $user->data()->MailAddress;
+                    $mailsub = 'nieuwe reactie op uw ticket!';
+                    $mailmessage = "er is een reactie toegevoegd aan een van uw tickets. ID:(" . $tid . ")";
+                    sendmail($mailto, $mailsub, $mailmessage);
+                  }
 
 
 

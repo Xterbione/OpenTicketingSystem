@@ -1,14 +1,7 @@
 <?php
 require 'core/init.php';
-
-$notify = new notify();
-
-// $notify->createnotify(array(
-//     'User_ID'  => '1',
-//     'Notify_title' => 'Nieuwe reactie!',
-//     'Notify_content' => 'testing'
-// ));
-
+$mail = new mailer();
+$mail->sendmail('bryan@odin-ict.nl', 'yomama', 'this is a test mail');
 
 
 

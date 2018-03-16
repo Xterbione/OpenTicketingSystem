@@ -48,7 +48,7 @@ class user{
           if ($data->count()) {
             $this->_data = $data->first();
             return true;
-          }
+          } 
         }
       }
 
@@ -101,7 +101,7 @@ $groupnum = $key->Groupnum;
         echo "
 
         <tr>
-          <td><i class='material-icons mdl-list__item-icon'>person</i></td>
+          <td><i class='material-icons mdl-list__item-avatar'>person</i></td>
           <td class='mdl-data-table__cell--non-numeric'>".htmlspecialchars($key->MailAddress, ENT_QUOTES)."</td>
           <td class='mdl-data-table__cell--non-numeric'>".htmlspecialchars($key->UserName, ENT_QUOTES)."</td>
           <td class='mdl-data-table__cell--non-numeric'>".htmlspecialchars($key->name, ENT_QUOTES)."</td>

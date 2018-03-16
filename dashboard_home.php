@@ -12,7 +12,9 @@
     if ($user->isloggedin()) {
         if ($ustatus == 1) {
         if (Input::exists()) {
+            if (token::check(Input::get('token'))) {
             if (Input::get('onderwerptitel') != '') {
+
                 $input = '';
                 $input = Input::get('onderwerptitel');
                 $input = str_replace(' ', '', $input);
@@ -28,6 +30,7 @@
                     die($e->getMessage());
                 }
             }
+          }
         } ?>
  <!DOCTYPE html>
  <html>
@@ -40,6 +43,8 @@
      <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.pink-light_blue.min.css" />
      <link rel="stylesheet" href="css/material-extends.css">
      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+     <meta property="og:image" content="https://www.brainconsultant.nl/wp-content/uploads/2016/11/favicon.png">
+         <link rel="shortcut icon" type="image/png" href="icons/favicon.png"/>
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <script type="text/javascript">
          // Load Charts and the corechart and barchart packages.
@@ -132,7 +137,7 @@ vAxis : { textStyle : { fontSize: 10} },
             <h3 style="height: 100px; margin: auto;">Recent aangemaakte tickets</h3>
              <div class="scrolldiv2">
                <div class="ticketinfodrawer">
-                 <p style="color: white; text-align: center; padding-top: 15px;"> Tickets aangemaakt in de afgelopen 24 uur</p>
+                 <p style="color: white; text-align: center; padding-top: 15px;"> Openstaande tickets</p>
                </div>
   <div class='container'>
                 <?php $ticketing->getallopen(); ?>
@@ -156,6 +161,7 @@ vAxis : { textStyle : { fontSize: 10} },
                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label " >
                    <input class="mdl-textfield__input" type="text" name="onderwerptitel" id="onderwerptitel">
                    <label class="mdl-textfield__label" for="onderwerp">onderwerp</label>
+                       <input type="hidden" name="token" id="token" value="<?php echo token::generate();?>"/>
                  </div>
                  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" style="position: relative; top: 50px;">
                    invoeren
@@ -186,7 +192,7 @@ vAxis : { textStyle : { fontSize: 10} },
 
 
      <script type="text/javascript" src="script/jquery.js"></script>
-    <script src="/script/mixitup.min.js"></script>
+    <script src="script/mixitup.min.js"></script>
      <script  src="script/dashboard_new.js"></script>
      <script type="text/javascript">
      var mixer = mixitup('.container');

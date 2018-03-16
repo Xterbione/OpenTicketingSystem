@@ -64,8 +64,10 @@
                     foreach ($data->results() as $key)
                     {
                       $uid = $key->User_ID;
-                      if (!in_array($uid, $array))
+                      $cid = $this->getcreatorid($tid);
+                      if (!in_array($uid, $array) AND $cid != $uid AND $uid !=  $_SESSION['UID'])
                       {
+                        echo 'push';
                           array_push($array, $uid);
                       }
 
@@ -79,12 +81,24 @@
                     foreach($array as $value){
 
                     $this->createnotify(array(
-                        'User_ID'  => $uid,
+                        'User_ID'  => $value,
                         'Notify_title' => 'Nieuwe reactie!',
                         'Notify_content' => $content
                         ));
                       }
               }
+
+              public function getcreatorid ($tid)
+              {
+                    $data = $this->_db->get('tickets', array('Ticket_ID', '=', $tid));
+                    // print_r($data->results());
+                        foreach ($data->results() as $key)
+                        {
+                          $cid = $key->Creator_ID;
+                        }
+                        return $cid;
+                  }
+
 
 }
 

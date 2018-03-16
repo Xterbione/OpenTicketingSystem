@@ -4,5 +4,6 @@ _h5ai/*
 settingss.conf
 settings.conf
 phpmyadmin/*
-core/init.php
+core/*
+functionlists/accountinfofunctionlistold.php
 !.gitignore

@@ -8,19 +8,23 @@
     <title>ticketing systeem - BrainConsultant</title>
       <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/css/stylesheet-login.css">
+    <link rel="stylesheet" href="css/material.min.css">
+    <script src="script/material.min.js"></script>
+    <link rel="shortcut icon" type="image/png" href="icons/favicon.png"/>
+    <link rel="stylesheet" href="css/material-extends.css">
 
   </head>
   <body>
 
     <header>
+      <div class="headr">
+
+      </div>
     </header>
 
 
-    <div class="loginwindow">
-
-      <div class="contentlw">
-        <div class="circleimage"></div>
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp loginwindow" style="">
+        <div class="circleimage" style="margin: auto;"></div>
         <h1>login</h1>
         <p>registreer je <a href="register.php">hier</a></p>
           <p style="color:#FF0082;">
@@ -65,13 +69,18 @@
         ?></p>
 
 
-        <form name="loginform" action="" method="post">
-          <label for="UserName">gebruikersnaam</label>
-          <input id="UserName" placeholder="Gebruikersnaam" name="UserName" type="text" autocomplete="off">
-          <label for="Password">wachtwoord</label>
-          <input id="password" name="password" placeholder="Wachtwoord" type="password" autocomplete="off">
+        <form name="loginform" action="" method="post" >
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <label for="UserName" class="mdl-textfield__label">gebruikersnaam</label>
+          <input id="UserName" class="mdl-textfield__input"  name="UserName" type="text" autocomplete="off">
+        </div>
+        <br>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <label for="password" class="mdl-textfield__label">password</label>
+        <input id="password" class="mdl-textfield__input"  name="password" type="password" autocomplete="off">
+      </div><br>
           <input type="hidden" name="token" value="<?php echo token::generate(); ?>">
-          <input type="submit" name="submit" value="inloggen"></input>
+          <input class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" type="submit" name="submit" value="inloggen"></input>
         </form>
       </div>
     </div>
@@ -84,7 +93,7 @@ if (isOn){
 
 </script>
     <footer>
-      <p>copyright©bryan</p>
+      <!--copyright©bryan davit koolman-->
     </footer>
 
   </body>
