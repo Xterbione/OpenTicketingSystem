@@ -6,6 +6,12 @@ class hash {
 
 
   }
+  public static function makemd5($string){
+
+    return  md5($string);
+
+
+  }
 
 
   public static function salt($length){

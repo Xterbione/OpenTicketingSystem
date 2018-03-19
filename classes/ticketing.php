@@ -20,6 +20,46 @@ class ticketing
         }
     }
 
+
+
+
+
+
+    public function getsubjectsselect()
+    {
+        $data = $this->_db->get('onderwerpen', array('enabled', '=', 1));
+        // print_r($data->results());
+        if ($data->count() !== 0) {
+            foreach ($data->results() as $key) {
+                echo '<option value="'.htmlspecialchars($key->onderwerptitel, ENT_QUOTES).'">'.htmlspecialchars($key->onderwerptitel, ENT_QUOTES) .'</option>';
+            }
+        } else {
+            echo "<p style='color:black;'> u heeft nog geen onderwerpen toegevoegd </p>";
+        }
+    }
+
+
+
+
+
+
+
+
+    public function getsubjectsreturnarray()
+    {
+        $data = $this->_db->get('onderwerpen', array('enabled', '=', 1));
+        // print_r($data->results());
+        if ($data->count() !== 0) {
+          $subjects = array();
+            foreach ($data->results() as $key) {
+              array_push($subjects, $key->onderwerptitel);
+            }
+            return $subjects;
+        } else {
+            echo "<p style='color:black;'> u heeft nog geen onderwerpen toegevoegd </p>";
+        }
+    }
+
     public function getallsubjects()
     {
         $data = $this->_db->get('onderwerpen', array(1, '=', 1));
@@ -103,7 +143,7 @@ class ticketing
               </div>";
             }
         } else {
-            echo "<p style='color:black;'>er zijn mogelijk nog geen tickets aangemaakt</p>";
+            echo "<p style='color:black; margin: 0 auto;'>er zijn mogelijk nog geen tickets aangemaakt</p>";
         }
     }
 
@@ -134,7 +174,7 @@ class ticketing
               </div>";
             }
         } else {
-            echo "<p style='color:black;'>er zijn mogelijk nog geen tickets aangemaakt</p>";
+            echo "<p style='color:black; margin: 0 auto;'>er zijn mogelijk nog geen tickets aangemaakt</p>";
         }
     }
 
@@ -168,7 +208,7 @@ class ticketing
               </div>";
             }
         } else {
-            echo "<p style='color:black;'>er zijn mogelijk nog geen tickets aangemaakt</p>";
+            echo "<p style='color:black; margin: 0 auto;'>er zijn mogelijk nog geen tickets aangemaakt</p>";
         }
     }
 
@@ -236,7 +276,7 @@ class ticketing
             }
 
         } else {
-            echo "<p style='color:black;'>er zijn mogelijk nog geen tickets aangemaakt</p>";
+            echo "<p style='color:black; margin: 0 auto;'>er zijn mogelijk nog geen tickets aangemaakt</p>";
         }
     }
 
@@ -309,6 +349,30 @@ class ticketing
             echo "<p style='color:black;'>er is iets fout gegaan</p>";
         }
     }
+
+    public function getticketcountbystatus($tid)
+    {
+
+      $subjects = array();
+      $subjects = $this->getsubjectsreturnarray();
+      foreach($subjects as $key) {
+
+        $data = $this->_db->get('tickets', array('onderwerp', '=', $key));
+        // print_r($data->results());
+        if ($data->count() !== 0) {
+            foreach ($data->results() as $key) {
+
+
+
+        return htmlspecialchars($key->Creator_ID, ENT_QUOTES);
+
+            }
+        } else {
+            echo "<p style='color:black;'>er is iets fout gegaan</p>";
+        }
+      }
+    }
+
     public function getticketstatusbyid($tid)
     {
         $data = $this->_db->get('tickets', array('Ticket_ID', '=', $tid));
@@ -337,6 +401,6 @@ class ticketing
 
 
 
-    
+
 
 }

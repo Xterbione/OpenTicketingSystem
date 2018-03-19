@@ -1,4 +1,11 @@
-<?php  ?>
+<?php
+require_once 'core/init.php';
+$user = new user();
+$ustatus = $user->data()->Groupnum;
+$uidedit = Input::get('uidedit');
+if ($ustatus == 1) {
+?>
+
 
 <!DOCTYPE html>
 <html>
@@ -15,20 +22,33 @@
 
     <div class="demo-card mdl-card mdl-shadow--2dp popupwindow2">
       <h3>wachtwoord wijzigen</h3>
+      <?php if (Input::get('mismatch') == 1) {
+        echo "<p style='color:red;'>controlleer invoer</p>";
+      } ?>
+      <form action="edituserpasswdprocess.php" method="post">
+
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin: 0 auto;">
-       <input class="mdl-textfield__input" type="text" id="sample3">
-       <label class="mdl-textfield__label" for="sample3">nieuwe wachtwoord</label>
+       <input class="mdl-textfield__input" name="password" type="password" id="password" autocomplete="off">
+       <label class="mdl-textfield__label" for="password">nieuwe wachtwoord</label>
      </div>
      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin: 0 auto;">
-      <input class="mdl-textfield__input" type="text" id="sample3">
-      <label class="mdl-textfield__label" for="sample3">wachtwoord herhalen</label>
+      <input class="mdl-textfield__input" type="password" name="password_again" id="password_again" autocomplete="off">
+      <label class="mdl-textfield__label" for="password_again">wachtwoord herhalen</label>
     </div>
-    <button class="mdl-button mdl-js-button mdl-button--primary">
+      <input type="hidden" name="uidedit" value="<?php echo $uidedit ?>">
+    <button type="submit" class="mdl-button mdl-js-button mdl-button--primary">
      doorvoeren
    </button>
+ </form>
    <a href="dashboard_gebruikers.php">    <button class="mdl-button mdl-js-button mdl-button--primary">
         terug
       </button></a>
     </div>
   </body>
 </html>
+<?php
+} else {
+  redirect::to('dashboard_home.php');
+}
+
+ ?>

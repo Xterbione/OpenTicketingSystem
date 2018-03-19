@@ -18,6 +18,7 @@
      <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.pink-light_blue.min.css" />
          <link rel="shortcut icon" type="image/png" href="icons/favicon.png"/>
      <link rel="stylesheet" href="css/material-extends.css">
+
    </head>
    <body>
      <style>
@@ -64,16 +65,28 @@
        </div>
        <main class="mdl-layout__content">
          <div class="page-content">
-
-
-      <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="heigth: 900px !important;">
-
-                 <a href='dashboard_create.php' style="margin: 0 auto; margin-top: 10px;"> <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
-  <i class="material-icons">add</i>
-</button></a>
-
-     <?php $ticket->getallfromuser($uid); ?>
-   </div>
+              <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="heigth: 900px !important;">
+                <form style="margin: 0 auto; margin-top: 15px;" action="createticket.php" method="post">
+                   <label>categorie</label>
+                   <select class="browser-default">
+                     <option value="" disabled selected>kies een categorie</option>
+                  <?php $ticketing = new ticketing;
+                  $ticketing->getsubjectsselect(); ?>
+                   </select><br>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" maxlength="10" id="sample3">
+                    <label class="mdl-textfield__label" for="sample3" >titel... (MAX 15 characters)</label>
+                  </div><br>
+                  <div class = "mdl-textfield mdl-js-textfield">
+                     <textarea class = "mdl-textfield__input" type = "text" rows =  "3"
+                        id = "text7" ></textarea>
+                     <label class = "mdl-textfield__label" for = "text7">beschrijving...</label>
+                  </div><br>
+                  <button type="submit" style="" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                    aanmaken
+                  </button>
+                </form>
+            </div>
 
            </div>
           </main>

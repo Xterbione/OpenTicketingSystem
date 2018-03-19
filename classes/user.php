@@ -48,7 +48,7 @@ class user{
           if ($data->count()) {
             $this->_data = $data->first();
             return true;
-          } 
+          }
         }
       }
 
@@ -107,20 +107,26 @@ $groupnum = $key->Groupnum;
           <td class='mdl-data-table__cell--non-numeric'>".htmlspecialchars($key->name, ENT_QUOTES)."</td>
           <td class='mdl-data-table__cell--non-numeric'>".htmlspecialchars($key->DateOfCreation, ENT_QUOTES)."</td>
           <td>
-            <select name='carlist' form='carform'>
+          <form class='' action='editstatproccess.php' method='post'>
+          <input type='hidden' name='uidedit' value='".htmlspecialchars($key->User_ID, ENT_QUOTES)."'>
+            <select name='ustat'>
               <option value='1' "; if ($groupnum == '1') {echo 'selected';}
-            echo ">beheerder (1)</option>
+            echo ">beheerder</option>
               <option value='0' "; if ($groupnum == '0') {echo 'selected';}
-            echo ">gebruiker(0)</option>
+            echo ">gebruiker</option>
             </select>
           </td>
           <td>".htmlspecialchars($key->User_ID, ENT_QUOTES)."</td>
-          <td><button class='mdl-button mdl-js-button mdl-button--raised mdl-button--accent'>toepassen</button></td>
+          <td><button type='submit' class='mdl-button mdl-js-button mdl-button--raised mdl-button--accent'>toepassen</button></td>
+            </form>
           <form class='' action='peruserticketview.php' method='post'>
           <input type='hidden' name='vuid' value='".htmlspecialchars($key->User_ID, ENT_QUOTES)."'>
           <td><button class='mdl-button mdl-js-button mdl-button--raised mdl-button--accent'>tickets</button></td>
           </form>
+              <form class='' action='edituserpasswd.php' method='post'>
+              <input type='hidden' name='uidedit' value='".htmlspecialchars($key->User_ID, ENT_QUOTES)."'>
           <td><button class='mdl-button mdl-js-button mdl-button--raised mdl-button--accent'>wachtwoord aanpassen</button></td>
+            </form>
         </tr>
           ";
             }
@@ -128,6 +134,27 @@ $groupnum = $key->Groupnum;
             echo "<p style='color:black; margin-left: 45%;'>er zijn geen tickets A.T.M.</p>";
         }
     }
+
+
+    public function changepass($uidedit, $passwordraw){
+        $salt         = hash::salt(32);
+        $passwordhash = hash::make($passwordraw, $salt);
+
+        if (!$this->_db->update('Users', $uidedit, array('password' => $passwordhash, 'salt' => $salt))) {
+            throw new Exception('er is een onverwachte fout opgetreden, het wachtwoord kon niet worden gewijzicht. :(');
+            print_r($fields);
+        }
+
+    }
+    public function changestat($uidedit, $stat){
+        if (!$this->_db->update('Users', $uidedit, array('Groupnum' => $stat))) {
+            throw new Exception('er is een onverwachte fout opgetreden, het wachtwoord kon niet worden gewijzicht. :(');
+            print_r($fields);
+        }
+
+    }
+
+
 }
 
 
