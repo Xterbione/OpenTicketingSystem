@@ -5,9 +5,9 @@ require 'core/init.php';
 
 function sendmail($mailto, $mailsub, $mailmessage){
 
-$_headermail = "<img src='https://www.brainconsultant.nl/wp-content/themes/brainconsultant/images/logo2.png' alt='logo'><h1 style='color: #FF0082'>  Ticketing system  </h1><br>";
-$_greetings = "<br> <p> m.v.g. BrainConsultant </p>";
-$_footermail = "<div style='width: 100%; height 20px; background-color: #FF0082; margin:0; text-align:center;'><p>als u op dit mail adres reageert, sturen wij geen reactie</p></div>";
+$_headermail = file_get_contents('includes/mailer/mailheader.php');
+$_greetings = file_get_contents('includes/mailer/greetings.php');
+$_footermail = file_get_contents('includes/mailer/footer.php');
 require_once 'phpmailer/PHPMailerAutoload.php';
 require_once 'phpmailer/class.phpmailer.php';
 $mail = new PHPMailer();

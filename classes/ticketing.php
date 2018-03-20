@@ -350,27 +350,17 @@ class ticketing
         }
     }
 
-    public function getticketcountbycategorie($tid)
+    public function getticketcountbycategorie()
     {
-
+      $returnvalue = array();
       $subjects = array();
       $subjects = $this->getsubjectsreturnarray();
       foreach($subjects as $subject) {
-
         $data = $this->_db->get('tickets', array('onderwerp', '=', $subject));
-        // print_r($data->results());
-        if ($data->count() !== 0) {
-            foreach ($data->results() as $key) {
-
-
-
-        return htmlspecialchars($key->Creator_ID, ENT_QUOTES);
-
-            }
-        } else {
-            echo "<p style='color:black;'>er is iets fout gegaan</p>";
-        }
+            $pushable = array($subject, $data->count());
+            array_push($returnvalue, $pushable);
       }
+      return json_encode($returnvalue);
     }
 
     public function getticketstatusbyid($tid)

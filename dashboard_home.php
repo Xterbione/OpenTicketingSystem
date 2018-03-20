@@ -57,13 +57,11 @@
            var data = new google.visualization.DataTable();
            data.addColumn('string', 'Topping');
            data.addColumn('number', 'Slices');
-           data.addRows([
-             ['BSOnline', 31],
-             ['Yellowyard', 11],
-             ['Uitbetaling', 22],
-             ['detachering/payrolling', 21],
-             ['overig', 2]
-           ]);
+           data.addRows(
+
+            <?php echo $ticketing->getticketcountbycategorie(); ?>
+
+           );
 
            var piechart_options = {title:'Taartdiagram: ticket aandeel per onderwerp',
                            width:350, height:300};
