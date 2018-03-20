@@ -350,14 +350,14 @@ class ticketing
         }
     }
 
-    public function getticketcountbystatus($tid)
+    public function getticketcountbycategorie($tid)
     {
 
       $subjects = array();
       $subjects = $this->getsubjectsreturnarray();
-      foreach($subjects as $key) {
+      foreach($subjects as $subject) {
 
-        $data = $this->_db->get('tickets', array('onderwerp', '=', $key));
+        $data = $this->_db->get('tickets', array('onderwerp', '=', $subject));
         // print_r($data->results());
         if ($data->count() !== 0) {
             foreach ($data->results() as $key) {
@@ -398,7 +398,13 @@ class ticketing
         }
     }
 
-
+    public function createticket($fields = array())
+    {
+        if (!$this->_db->insert('tickets', $fields)) {
+            throw new Exception('er is een onverwachte fout opgetreden, je onderwerp kon niet worden toegevoegd. :( vardump:');
+            print_r($fields);
+        }
+    }
 
 
 

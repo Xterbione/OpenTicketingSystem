@@ -139,7 +139,7 @@ vAxis : { textStyle : { fontSize: 10} },
                <div class="ticketinfodrawer">
                  <p style="color: white; text-align: center; padding-top: 15px;"> Openstaande tickets</p>
                </div>
-  <div class='container'>
+  <div class='container' style="padding-bottom: 60px;">
                 <?php $ticketing->getallopen(); ?>
                     </div>
              </div>

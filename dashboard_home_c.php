@@ -66,7 +66,7 @@
          <div class="page-content">
 
 
-      <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="heigth: 900px !important;">
+      <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="heigth: 900px !important; padding: 30px;">
 
                  <a href='dashboard_create.php' style="margin: 0 auto; margin-top: 10px;"> <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
   <i class="material-icons">add</i>

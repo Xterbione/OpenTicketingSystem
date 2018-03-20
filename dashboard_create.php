@@ -66,22 +66,26 @@
        <main class="mdl-layout__content">
          <div class="page-content">
               <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="heigth: 900px !important;">
-                <form style="margin: 0 auto; margin-top: 15px;" action="createticket.php" method="post">
+                <form style="margin: 0 auto; margin-top: 10px; margin-bottom: 10px;" action="createticket.php" method="post">
+                  <?php if (Input::get('f') == 1) {
+                    echo "<p style='color: red;'> er is iets fout gegaan, controlleer invoer. </p>";
+                  } ?>
                    <label>categorie</label>
-                   <select class="browser-default">
+                   <select class="browser-default" name="categorie">
                      <option value="" disabled selected>kies een categorie</option>
                   <?php $ticketing = new ticketing;
                   $ticketing->getsubjectsselect(); ?>
                    </select><br>
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" type="text" maxlength="10" id="sample3">
-                    <label class="mdl-textfield__label" for="sample3" >titel... (MAX 15 characters)</label>
+                    <input class="mdl-textfield__input" name="titel" type="text" maxlength="20" id="sample3">
+                    <label class="mdl-textfield__label" for="sample3" >Titet (MAX 20 characters)</label>
                   </div><br>
                   <div class = "mdl-textfield mdl-js-textfield">
-                     <textarea class = "mdl-textfield__input" type = "text" rows =  "3"
+                     <textarea class = "mdl-textfield__input" name="beschrijving" type = "text" rows =  "3"
                         id = "text7" ></textarea>
                      <label class = "mdl-textfield__label" for = "text7">beschrijving...</label>
                   </div><br>
+                    <input type="hidden" name="token" id="token" value="<?php echo token::generate();?>"/>
                   <button type="submit" style="" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                     aanmaken
                   </button>

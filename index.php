@@ -46,7 +46,7 @@
                     redirect::to('dashboard_home.php');
                     // redirect::to('dashboard.php');
                   } else {
-                    echo 'excuses, inloggen mislukt!';
+                    echo 'excuses, inloggen mislukt! controlleer uw gegevens';
                   }
                 } else {
                   $errors = $validation->errors();
