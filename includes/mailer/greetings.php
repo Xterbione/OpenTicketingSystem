@@ -1,2 +1,2 @@
 
-<br> <p> m.v.g. BrainConsultant </p>
+<br><br> <p> met viendelijke groet,<br> BrainConsultant </p>
