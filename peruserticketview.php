@@ -3,6 +3,9 @@ require 'core/init.php';
 $ticket = new ticketing();
 $user = new user();
 $vuid = Input::get('vuid');
+if ($user->data()->Groupnum == 1) {
+
+
 ?>
 
 <!DOCTYPE html>
@@ -39,3 +42,9 @@ $vuid = Input::get('vuid');
     </div>
   </body>
 </html>
+
+<?php
+} else {
+  redirect::to('dashboard_home.php');
+}
+?>

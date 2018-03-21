@@ -45,7 +45,6 @@
      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
      <meta property="og:image" content="https://www.brainconsultant.nl/wp-content/uploads/2016/11/favicon.png">
          <link rel="shortcut icon" type="image/png" href="icons/favicon.png"/>
-     <meta name="viewport" content="width=device-width, initial-scale=1">
      <script type="text/javascript">
          // Load Charts and the corechart and barchart packages.
          google.charts.load('current', {'packages':['corechart']});
@@ -94,7 +93,7 @@ vAxis : { textStyle : { fontSize: 10} },
        <header class="mdl-layout__header">
          <div class="mdl-layout__header-row">
            <!-- Title -->
-           <span class="mdl-layout-title" >Brainconsultant Ticketing system</span>
+           <span class="mdl-layout-title" >Brainconsultant T.S.</span>
            <!-- Add spacer, to align navigation to the right -->
            <div class="mdl-layout-spacer"></div>
            <!-- Navigation. We hide it in small screens. -->
@@ -161,10 +160,17 @@ vAxis : { textStyle : { fontSize: 10} },
                    <label class="mdl-textfield__label" for="onderwerp">onderwerp</label>
                        <input type="hidden" name="token" id="token" value="<?php echo token::generate();?>"/>
                  </div>
-                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" style="position: relative; top: 50px;">
+                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" style="">
                    invoeren
                  </button>
-                 </form>
+               </form>
+               <p>verwijder alle tickets ouder dan 3 jaar</p>
+                <a style="all: none; margin-top: -10px !important;" href="opschonen.php">
+                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" style="position: relative; top: 0px;">
+
+                   applicatie opschonen
+                 </button>
+               </a>
                  <div class="footerribon"></div>
             </div>
 

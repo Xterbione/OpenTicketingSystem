@@ -19,6 +19,7 @@
      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
      <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.pink-light_blue.min.css" />
      <link rel="stylesheet" href="css/material-extends.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
          <link rel="shortcut icon" type="image/png" href="icons/favicon.png"/>
    </head>
    <body>
@@ -27,7 +28,7 @@
        <header class="mdl-layout__header">
          <div class="mdl-layout__header-row">
            <!-- Title -->
-           <span class="mdl-layout-title" >Brainconsultant Ticketing system</span>
+           <span class="mdl-layout-title" >Brainconsultant T.S.</span>
            <!-- Add spacer, to align navigation to the right -->
            <div class="mdl-layout-spacer"></div>
            <!-- Navigation. We hide it in small screens. -->
@@ -75,28 +76,22 @@
                   <label class="mdl-textfield__label" for="sample3">herhaal het wachtwoord</label>
                 </div>
                 <div class="footerribon" style="left: 0;"></div>
+                <div class="scrolldiv3" style="height: 300px; overflow: scroll; width:180px;">
+                  <table  class="mdl-data-table mdl-js-data-table mdl-shadow--2dp zui-table" style="">
+                    <thead>
+                        <tr>
+                            <th>Login History</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+
+                        getloginhistory($uid); ?>
+
+                    </tbody>
+                  </table>
+                 </div>
             </div>
-
-            <div class="demo-card-wide mdl-card mdl-shadow--2dp profilewindow">
-            <p class="blacktext" id="acstatstoptext">Account statistics<br></p>
-             <div class="scrolldiv3" style="height: 300px; overflow: scroll; width:180px;">
-               <table  class="mdl-data-table mdl-js-data-table mdl-shadow--2dp zui-table" style="">
-                 <thead>
-                     <tr>
-                         <th>Login History</th>
-                     </tr>
-                 </thead>
-                 <tbody>
-                   <?php
-
-                     getloginhistory($uid); ?>
-
-                 </tbody>
-               </table>
-              </div>
-             <div style="" class="footerribon"></div>
-           </div>
-
 
          </div>
        </main>

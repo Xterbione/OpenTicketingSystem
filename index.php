@@ -12,6 +12,7 @@
     <script src="script/material.min.js"></script>
     <link rel="shortcut icon" type="image/png" href="icons/favicon.png"/>
     <link rel="stylesheet" href="css/material-extends.css">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   </head>
   <body>

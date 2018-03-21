@@ -380,11 +380,19 @@ class ticketing
         }
     }
 
-    public function closeticket($tid)
+    public function opschonen()
     {
-        if (!$this->_db->updateticket('tickets', $tid, array('Status' => 'gesloten'))) {
-            throw new Exception('er is een onverwachte fout opgetreden, je ticket kon niet worden gesloten. :(');
-            print_r($fields);
+      $myDate = date("Y-m-d", strtotime( date( "Y-m-d", strtotime( date("Y-m-d") ) ) . "-36 month" ) );
+        if (!$this->_db->delete('tickets', array('aanmaakdatum', '<=', $myDate))) {
+            throw new Exception('er is een onverwachte fout opgetreden, kan opschonen niet uitvoeren. :(');
+
+        } else {
+          if (!$this->_db->delete('Ticket_Comments', array('PostDatum', '<=', $myDate))) {
+              throw new Exception('er is een onverwachte fout opgetreden, kan opschonen van comments niet voltooien. :(');
+              print_r($fields);
+          } else {
+            return true;
+          }
         }
     }
 
@@ -392,6 +400,14 @@ class ticketing
     {
         if (!$this->_db->insert('tickets', $fields)) {
             throw new Exception('er is een onverwachte fout opgetreden, je onderwerp kon niet worden toegevoegd. :( vardump:');
+            print_r($fields);
+        }
+    }
+
+    public function closeticket($tid)
+    {
+        if (!$this->_db->updateticket('tickets', $tid, array('Status' => 'gesloten'))) {
+            throw new Exception('er is een onverwachte fout opgetreden, je ticket kon niet worden gesloten. :(');
             print_r($fields);
         }
     }
