@@ -3,11 +3,11 @@
 <?php
   require_once 'core/init.php';
     session_start();
-    include 'functionlists/accountinfofunctionlist.php';
     $uid = $_SESSION['UID'];
     $user = new user();
     $notifyer = new notify();
     $ticketing = new ticketing();
+    $settinghandler = new settinghandler();
     $ustatus = $user->data()->Groupnum;
     if ($user->isloggedin()) {
         if ($ustatus == 1) {
@@ -18,12 +18,12 @@
                 $input = '';
                 $input = Input::get('onderwerptitel');
                 $input = str_replace(' ', '', $input);
-                $filter = new ticketing();
+                $ticketing = new ticketing();
                 try {
-                    $filter->createsubject(array(
-        'onderwerptitel'  => $input,
-        'enabled'  => 1
-        ));
+                    $ticketing->createsubject(array(
+                    'onderwerptitel'  => $input,
+                    'enabled'  => 1
+                    ));
 
                     unset($_GET['onderwerptitel']);
                 } catch (Exception $e) {
@@ -77,10 +77,15 @@ vAxis : { textStyle : { fontSize: 10} },
            barchart.draw(data, barchart_options);
          }
          </script>
+         <style media="screen">
+           .footerribon{
+             background-color: <?php echo $settinghandler->GetBrandCollor; ?>;
+           }
+         </style>
    </head>
    <body>
      <div class="loader" style="height: 100%; width: 100%; background: white; position: absolute; z-index: 999; text-align: center; ">
-       <img src="icons/brainlogo.png" class="brainlogoload" style="" alt="">
+       <img src="<?php echo $settinghandler->GetLogoLink(); ?>" class="brainlogoload" style="" alt="">
        <div class="loadercomponent" style="text-aling:center;margin: 0 auto; width: 500px; margin-top: 25%;">
          <p>loading...</p><br>
          <p>als de pagina niet laad, gebruik dan aub een andere ondersteunde browser, zoals chrome.</p>
@@ -93,7 +98,7 @@ vAxis : { textStyle : { fontSize: 10} },
        <header class="mdl-layout__header">
          <div class="mdl-layout__header-row">
            <!-- Title -->
-           <span class="mdl-layout-title" >Brainconsultant T.S.</span>
+           <span class="mdl-layout-title" ><?php echo $settinghandler->GetCompanyName();  ?> T.S.</span>
            <!-- Add spacer, to align navigation to the right -->
            <div class="mdl-layout-spacer"></div>
            <!-- Navigation. We hide it in small screens. -->
@@ -134,7 +139,11 @@ vAxis : { textStyle : { fontSize: 10} },
             <h3 style="height: 100px; margin: auto;">Recent aangemaakte tickets</h3>
              <div class="scrolldiv2">
                <div class="ticketinfodrawer">
-                 <p style="color: white; text-align: center; padding-top: 15px;"> Openstaande tickets</p>
+                 <p style="color: white; text-align: center; padding-top: 15px;">
+            <?php echo session::flash('tclosed');
+                  echo session::flash('gearchiveerd');
+            ?>
+                 </p>
                </div>
   <div class='container' style="padding-bottom: 60px;">
                 <?php $ticketing->getallopen(); ?>
@@ -144,10 +153,11 @@ vAxis : { textStyle : { fontSize: 10} },
            </div>
            <div class="demo-card-wide mdl-card mdl-shadow--2dp homewindow1">
              <h3>Ticket rapportage</h3>
+             <p style="margin-top: -25px;">rapportage van afgelopen 31 dagen.</p>
                <div class="chart_div">
                  <div id="piechart_div" class="chart row" style=" width: 350px !important; position: absolute; left: 0;"></div>
                  <div id="barchart_div" class="chart row" style="width: 350px !important;position: absolute; right: 0;"></div>
-               </div>
+               </div><br>
              <div class="footerribon"></div>
            </div>
 
@@ -182,8 +192,8 @@ vAxis : { textStyle : { fontSize: 10} },
               <div class="scrolldifi">
                   <ul style="list-style: none;  width: 100%;    height: auto;  overflow: hidden; margin-left: -29px;">
                   <li class="btnround" style="width: auto; height: auto; padding: 12px 15px; float: left; cursor: pointer;" data-filter="all"> <span> alles weergeven</span></li>
-                   <?php $filter = new ticketing();
-                   $filter->getsubjects(); ?>
+                   <?php $ticketing = new ticketing();
+                   $ticketing->getsubjects(); ?>
                   </ul>
              </div>
            </div>

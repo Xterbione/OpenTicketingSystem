@@ -1,17 +1,15 @@
 <?php
+require_once 'core/init.php';
 
-$user = new user;
+$notify = new notify();
+$user = new user();
+$uid = $_SESSION['UID'];
 
-$nid = $_POST["nid"];
+if ($user->isloggedin()) {
+    $notify->delallnotify($uid);
+header('Location: ' . $_SERVER["HTTP_REFERER"] );
+} else {
+  redirect::to('index.php');
+}
 
-delallnotify($nid);
-
-
-
-
-
-
-
-
-
-?>
+ ?>

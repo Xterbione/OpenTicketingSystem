@@ -16,7 +16,7 @@ class user{
 
           if (!$user) {
             if (session::exists($this->_sessionid)) {
-              $user = session::get($this->_sessionid);
+                $user = session::get($this->_sessionid);
 
               if ($this->find($user)) {
                 $this->_isLoggedIn = true;
@@ -148,6 +148,51 @@ $groupnum = $key->Groupnum;
     }
     public function changestat($uidedit, $stat){
         if (!$this->_db->update('Users', $uidedit, array('Groupnum' => $stat))) {
+            throw new Exception('er is een onverwachte fout opgetreden, het wachtwoord kon niet worden gewijzicht. :(');
+            print_r($fields);
+        }
+
+    }
+
+    public function gethistorybyid($uid)
+    {
+        $data = $this->_db->get('Login_History', array('user_id', '=', $uid));
+        $counter = 0;
+        if ($data->count() !== 0) {
+            foreach (array_reverse($data->results()) as $key)
+            {
+              $counter ++;
+
+        echo "<tr><td style='text-align:center;'>" . $key->LastLoginDate . "</td></tr>";
+        if ($counter > 49) {
+          break;
+        }
+            }
+        } else {
+            echo "<td style='text-align: center; color: red;>er is iets fout gegaan</p>";
+        }
+    }
+
+    public function getalladminselect()
+    {
+        $data = $this->_db->get('Users', array('Groupnum', '=', 1));
+        // print_r($data->results());
+        if ($data->count() !== 0) {
+            foreach ($data->results() as $key) {
+
+
+        echo "
+              <option value='". $key->User_ID ."'>". $key->name ."</option>
+          ";
+            }
+        } else {
+            echo "<p style='color:black; margin-left: 45%;'>er zijn geen tickets A.T.M.</p>";
+        }
+    }
+
+
+    public function changemail($uid,$newmail){
+        if (!$this->_db->update('Users', $uidedit, array('MailAddress' => $newmail))) {
             throw new Exception('er is een onverwachte fout opgetreden, het wachtwoord kon niet worden gewijzicht. :(');
             print_r($fields);
         }

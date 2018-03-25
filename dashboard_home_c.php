@@ -3,6 +3,7 @@
     $uid = $_SESSION['UID'];
     $ticket = new ticketing();
     $user = new user();
+    $settinghandler = new settinghandler();
       if ($user->isloggedin()) {
  ?>
 
@@ -21,6 +22,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
    <body>
+     <div class="loader" style="height: 100%; width: 100%; background: white; position: absolute; z-index: 999; text-align: center; ">
+       <img src="<?php echo $settinghandler->GetLogoLink(); ?>" class="brainlogoload" style="" alt="">
+       <div class="loadercomponent" style="text-aling:center;margin: 0 auto; width: 500px; margin-top: 25%;">
+         <p>loading...</p><br>
+         <p>als de pagina niet laad, gebruik dan aub een andere ondersteunde browser, zoals chrome.</p>
+         <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+       </div>
+     </div>
      <style>
      .demo-card-wide.mdl-card {
        width: 100%;
@@ -37,7 +46,7 @@
        <header class="mdl-layout__header">
          <div class="mdl-layout__header-row">
            <!-- Title -->
-           <span class="mdl-layout-title" >Brainconsultant T.S.</span>
+           <span class="mdl-layout-title" ><?php echo $settinghandler->GetCompanyName();  ?> T.S.</span>
            <!-- Add spacer, to align navigation to the right -->
            <div class="mdl-layout-spacer"></div>
            <!-- Navigation. We hide it in small screens. -->
@@ -67,21 +76,30 @@
          <div class="page-content">
 
 
-      <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="heigth: 900px !important; padding: 30px;">
+           <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="heigth: 900px !important; padding: 30px; text-align:center;">
+     <h1 style="color: #FF0082;">Home</h1>
+     <p style="color: red;">
+<?php echo session::flash('tclosed');
+  echo session::flash('gearchiveerd');
+    echo session::flash('createticket'); ?>
+     </p>
 
                  <a href='dashboard_create.php' style="margin: 0 auto; margin-top: 10px;"> <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
   <i class="material-icons">add</i>
 </button></a>
+<div style="text-align: left;">
 
-     <?php $ticket->getallfromuser($uid); ?>
+     <?php $ticket->getallfromusernoarchive($uid); ?>
    </div>
+ </div>
 
            </div>
           </main>
         </div>
       </body>
+      <script type="text/javascript" src="script/jquery.js"></script>
+      <script  src="script/dashboard_new.js"></script>
     </html>
-     <script  src="script/dashboard_new.js"></script>
 <?php } else {
   redirect::to('index.php');
 } ?>

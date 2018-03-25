@@ -6,14 +6,17 @@ require_once 'core/init.php';
   $tid = Input::get('ticketid');
   $notify = new notify();
   $user = new user();
-  $filter = new ticketing();
+  $ticketing = new ticketing();
+  if ($user->isloggedin()) {
+    if ($user->data()->Groupnum == 1 OR $user->data()->User_ID == $ticketing->getticketcreatorbyid($tid)) {
+      # code...
           $input = '';
           $input = Input::get('comment');
           print_r($input);
           if (Input::exists()) {
             if (Input::get('comment') != '') {
           try {
-              $filter->createcomment(array(
+              $ticketing->createcomment(array(
                   'Ticket_ID'  => $tid,
                   'User_ID'  => $uid,
                   'PostDatum' => $date,
@@ -26,10 +29,30 @@ require_once 'core/init.php';
                     $cid = $notify->getcreatorid($tid);
                     $uid = $_SESSION['UID'];
                   if ($uid != $cid) {
-                    $user->find($creatorid);
+                    if ($ticketing->checkkoppeling($tid, $uid)) {
+                        //aanmaken notificatie
+                      $content = "u bent gekoppeld aan ticket: <a href='ticketview.php?ticketid=" . $tid ."'> " . $tid. "</a>";
+
+                          $notify->createnotify(array(
+                          'User_ID'  => $uid,
+                          'Notify_title' => 'Koppeling gemaakt',
+                          'Notify_content' => $content
+                          ));
+
+                          //aanmaken melding
+
+                      echo $tid. "<br>". $uid;
+                      echo "<br>". "OK!";
+                              $ticketing->createkoppeling(array(
+                              'Ticket_ID'  => htmlspecialchars($tid, ENT_QUOTES),
+                              'user_id'  => htmlspecialchars($uid, ENT_QUOTES)
+                              ));
+                              $ticketing->progressticket($tid);
+                          }
+                    $user->find($cid);
                     $mailto = $user->data()->MailAddress;
                     $mailsub = 'nieuwe reactie op uw ticket!';
-                    $mailmessage = "er is een reactie toegevoegd aan een van uw tickets. ID:(" . $tid . ")";
+                    $mailmessage = "beste " . $user->data()->name . "<br>er is een reactie toegevoegd aan een van uw tickets. ID:(" . $tid . ")";
                     sendmail($mailto, $mailsub, $mailmessage);
                   }
 
@@ -43,6 +66,12 @@ require_once 'core/init.php';
     redirect::to('ticketview.php?ticketid=' . $tid);
     }
 } else {
+  redirect::to('ticketview.php?ticketid=' . $tid);
+}
+}else {
+  redirect::to('ticketview.php?ticketid=' . $tid);
+}
+}else {
   redirect::to('ticketview.php?ticketid=' . $tid);
 }
 

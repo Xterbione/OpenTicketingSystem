@@ -31,7 +31,7 @@ if (in_array($categorie,$subjectarray)) {
     'Creator_ID' => $cid
 ));
 
-
+    session::setflash('createticket','Ticket aangemaakt!');
 
 
     redirect::to('dashboard_home.php');
@@ -39,13 +39,16 @@ if (in_array($categorie,$subjectarray)) {
      redirect::to('dashboard_create.php?f=1');
  }
 } else {
-      redirect::to('dashboard_create.php?f=1');
+      session::setflash('incimp','Invoer onjuist. controlleer alle velden');
+      redirect::to('dashboard_create.php');
   }
 } else {
-  redirect::to('dashboard_create.php?f=1');
+        session::setflash('incimp','Invoer onjuist. controlleer alle velden');
+  redirect::to('dashboard_create.php');
 }
 } else {
-  redirect::to('dashboard_create.php?f=1');
+        session::setflash('incimp','Invoer onjuist. controlleer alle velden');
+  redirect::to('dashboard_create.php');
 }
 
 

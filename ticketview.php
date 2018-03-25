@@ -8,9 +8,10 @@
     $notifyer = new notify();
     $date = date('Y-m-d H:i:s');
     $tid = Input::get('ticketid');
-    $filter = new ticketing();
+    $ticketing = new ticketing();
     $ustatus = $user->data()->Groupnum;
-    $cuid = $filter->getticketcreatorbyid($tid);
+    $settinghandler = new settinghandler();
+    $cuid = $ticketing->getticketcreatorbyid($tid);
     if ($user->isloggedin()) {
       if ($uid == $cuid OR $ustatus == 1) {
        ?>
@@ -44,13 +45,34 @@
        <header class="mdl-layout__header">
          <div class="mdl-layout__header-row">
            <!-- Title -->
-           <span class="mdl-layout-title" >Brainconsultant T.S.</span>
+           <span class="mdl-layout-title" ><?php echo $settinghandler->GetCompanyName();  ?> T.S.</span>
            <!-- Add spacer, to align navigation to the right -->
            <div class="mdl-layout-spacer"></div>
            <!-- Navigation. We hide it in small screens. -->
            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                     <?php if ($ustatus == 1) {?>
+             <div style="background-color: grey; padding-left: 5px; padding-right: 5px;">
+               <p><?php echo session::flash('melding'); ?></p>
+             </div>
+                     <?php   } ?>
+              <?php if ($ustatus == 1) {
+                ?>
+                <div style="padding: 10px; z-index: 999;">
+                  <form name="createkoppeling" action="createkoppeling.php" method="post">
+                    <select name="uid">
+                      <option value="" disabled selected>koppeling maken</option>
+                      <?php $user->getalladminselect(); ?>
+                    </select>
+                    <input type="hidden" name="ticketid" value="<?php echo $tid; ?>">
+                    <button type="submit" name="button">
+                      <img src="icons/koppellen.png" alt="Koppeling Maken" style="height:30px;">
+                    </button>
+                  </form>
+                </div>
+              <?php   } ?>
            </nav>
            <!-- notify inbox icon -->
+
            <?php if ($ustatus == 1) { ?>
            <div class="material-icons mdl-badge mdl-badge--overlap notify " data-badge="<?php $notifyer->countnotify($uid); ?>">account_box </div>
          <?php } ?>
@@ -74,6 +96,7 @@
          <div class="page-content">
 
 
+           <div style="margin-top: 50px;">
 
               <?php
               if ($ustatus == 1)
@@ -87,8 +110,9 @@
               $ticketing->viewticketbyid($tid);
 
 
-?>
+                ?>
 
+            </div>
 
 
 
@@ -101,8 +125,8 @@
 
 
 <?php
-$tstatus = $filter->getticketstatusbyid($tid);
-if ($tstatus == 'open') {?>
+$tstatus = $ticketing->getticketstatusbyid($tid);
+if ($tstatus == 'open' OR $tstatus == 'behandelen') {?>
 
 
       <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="padding: 25px; margin-bottom: 30px  ;">

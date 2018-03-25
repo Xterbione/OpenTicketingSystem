@@ -1,12 +1,11 @@
 <?php
   require_once 'core/init.php';
-    session_start();
-    include 'functionlists/accountinfofunctionlist.php';
     $uid = $_SESSION['UID'];
     $notifyer = new notify();
     $user = new user();
+    $ticketing = new ticketing();
     $ustatus = $user->data()->Groupnum;
-    $settinghandler = new settinghandler();
+        $settinghandler = new settinghandler();
     if ($user->isloggedin()) {
       if ($ustatus == 1) {
         if (Input::exists()) {
@@ -58,11 +57,13 @@
            <!-- Navigation. We hide it in small screens. -->
            <nav class="mdl-navigation mdl-layout--large-screen-only">
            </nav>
+           <?php if ($user->data()->Groupnum == 1) {?>
            <!-- notify inbox icon -->
            <div class="material-icons mdl-badge mdl-badge--overlap notify " data-badge="<?php $notifyer->countnotify($uid); ?>">account_box </div>
           <!-- logout button -->
-          <a href="logout.php"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
-              logout
+      <?php      } ?>
+      <a href="logout.php"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+        logout
           </button>
           </a>
 
@@ -86,8 +87,12 @@
 
        <!-- ticket window -->
           <div class="ticketwindow demo-card-wide mdl-card mdl-shadow--2dp">
-            <!-- Expandable Textfield -->
-
+            <a href="dashboard_koppelingenverborgen.php">
+            <button class="mdl-button mdl-js-button mdl-button--primary">
+  naar verborgen koppelingen
+</button>
+</a>
+            <p style="text-align: center;"><?php echo session::flash('melding'); ?></p>
 
 
             <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp usertable">
@@ -95,31 +100,19 @@
               <thead>
                 <tr class="clickable-row" data-href='url://Brainconsultant.nl'>
                   <th></th>
-                  <th class="mdl-data-table__cell--non-numeric">Mail adres</th>
-                  <th class="mdl-data-table__cell--non-numeric">Gebruikersnaam</th>
-                  <th class="mdl-data-table__cell--non-numeric">Naam</th>
-                  <th class="mdl-data-table__cell--non-numeric">Registratie datum</th>
-                  <th>gebruikersgroepnum</th>
-                  <th>User_ID</th>
-                  <th></th>
-                  <th></th>
+                  <th class="mdl-data-table__cell--non-numeric">Ticket ID</th>
+                  <th class="mdl-data-table__cell--non-numeric">Categorie</th>
+                  <th class="mdl-data-table__cell--non-numeric">Aanmaakdatum</th>
+                  <th class="mdl-data-table__cell--non-numeric">Titel</th>
+                  <th class="mdl-data-table__cell--non-numeric">Status</th>
+                  <th class="mdl-data-table__cell--non-numeric">creator</th>
+                  <th class="mdl-data-table__cell--non-numeric">naar ticket</th>
                   <th>
-                    <form action="#" name="searche with id">
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-                      <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-                        <i class="material-icons">search</i>
-                      </label>
-                      <div class="mdl-textfield__expandable-holder">
-                        <input class="mdl-textfield__input" type="text" id="search" placeholder="zoeken op User_ID">
-                        <label class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
-                      </div>
-                    </div>
-                  </form>
                 </th>
                 </tr>
               </thead>
               <tbody>
-                  <?php $user->getallformanager() ?>
+              <?php   $ticketing->getallfromkoppeling($uid); ?>
               </tbody>
             </table>
              <div class="footerribon"></div>

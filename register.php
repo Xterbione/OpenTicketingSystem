@@ -64,6 +64,7 @@ if (Input::exists()) {
       'required' => true,
       'min'      => 6,
       'max'      => 50,
+      'unique'   => 'Users'
     ),
     'password' => array(
       'required' => true,

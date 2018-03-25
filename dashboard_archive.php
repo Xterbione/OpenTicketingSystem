@@ -9,8 +9,7 @@
 
 
  <!DOCTYPE html>
-<!DOCTYPE html>
-<html>
+ <html>
    <head>
      <meta charset="utf-8">
      <title>Ticketing system</title>
@@ -46,9 +45,6 @@
            <nav class="mdl-navigation mdl-layout--large-screen-only">
            </nav>
            <!-- notify inbox icon -->
-           <?php if ($ustatus == 1) { ?>
-           <div class="material-icons mdl-badge mdl-badge--overlap notify " data-badge="<?php $notifyer->countnotify($uid); ?>">account_box </div>
-         <?php } ?>
           <!-- logout button -->
           <a href="logout.php"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
               logout
@@ -67,34 +63,19 @@
        </div>
        <main class="mdl-layout__content">
          <div class="page-content">
-              <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="heigth: 900px !important;">
-                <form style="margin: 0 auto; margin-top: 10px; margin-bottom: 10px;" action="createticket.php" method="post">
-                  <?php
-                    echo "<p style='color: red;'>";
-                    echo session::flash('incimp');
-                    echo ". </p>";
-                  ?>
-                   <label>categorie</label>
-                   <select class="browser-default" name="categorie">
-                     <option value="" disabled selected>kies een categorie</option>
-                  <?php $ticketing = new ticketing;
-                  $ticketing->getsubjectsselect(); ?>
-                   </select><br>
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                    <input class="mdl-textfield__input" name="titel" type="text" maxlength="20" id="sample3">
-                    <label class="mdl-textfield__label" for="sample3" >Titet (MAX 20 characters)</label>
-                  </div><br>
-                  <div class = "mdl-textfield mdl-js-textfield">
-                     <textarea class = "mdl-textfield__input" name="beschrijving" type = "text" rows =  "3"
-                        id = "text7" ></textarea>
-                     <label class = "mdl-textfield__label" for = "text7">beschrijving...</label>
-                  </div><br>
-                    <input type="hidden" name="token" id="token" value="<?php echo token::generate();?>"/>
-                  <button type="submit" style="" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                    aanmaken
-                  </button>
-                </form>
-            </div>
+
+
+
+      <div class="demo-card-wide mdl-card mdl-shadow--2dp" style="heigth: 900px !important; padding: 30px; text-align:center;">
+<h1 style="color: #FF0082;">Archief</h1>
+<p style="color: red;">
+<?php echo session::flash('gedearchiveerd'); ?>
+</p>
+<div style="text-align: left;">
+
+     <?php $ticket->getallfromuserarchive($uid); ?>
+   </div>
+   </div>
 
            </div>
           </main>

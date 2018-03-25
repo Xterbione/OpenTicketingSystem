@@ -19,11 +19,13 @@
               $data = $this->_db->get('Notifications', array('User_ID', '=', $user));
               // print_r($data->results());
               if ($data->count() !== 0) {
-            foreach ($data->results() as $key)
+            foreach (array_reverse($data->results()) as $key)
             {
                   echo ' <div class="notifycontain" style=" min-height: 90px; margin: 12px; padding-top: 5px; padding-bottom: 20px;">';
-                  echo '<p style="margin-bottom: -30px;">'.  htmlspecialchars($key->Notify_title, ENT_QUOTES) . '</p><br><hr></hr><br>';
+                  echo '<p style="margin-bottom: -30px; color: black;">'.  htmlspecialchars($key->Notify_title, ENT_QUOTES) . '</p><br><hr></hr><br>';
                   echo  $key->Notify_content;
+                  echo "<hr></hr>";
+                  echo $key->dateofcreation;
                   echo '</div>';
                 }
               } else {
@@ -31,7 +33,6 @@
               }
             }
           }
-
 
           public function countnotify($user)
           {
@@ -47,6 +48,7 @@
 
           public function createnotify($fields = array())
           {
+
               if (!$this->_db->insert('Notifications', $fields)) {
                   throw new Exception('er is een onverwachte fout opgetreden, je notificatie kon niet worden aangemaakt. :( vardump:');
                   print_r($fields);
@@ -77,7 +79,7 @@
                     // $notify = new notify();
 
                     print_r($array);
-                    $content = "new message has been added to:  <a href='ticketview.php?ticketid=" . $tid ."'> " . $tid. "</a>";
+                    $content = "er is een nieuwe reactie toegevoegd:  <a href='ticketview.php?ticketid=" . $tid ."'> " . $tid. "</a>";
                     foreach($array as $value){
 
                     $this->createnotify(array(
@@ -98,7 +100,15 @@
                         }
                         return $cid;
                   }
+                public function delallnotify($uid){
 
+                  if (!$this->_db->delete('Notifications', array('User_ID', '=', $uid))) {
+                      throw new Exception('er is een onverwachte fout opgetreden, kan opschonen van comments niet voltooien. :( @stage2');
+                      print_r($fields);
+                  }
+
+
+                }
 
 }
 
