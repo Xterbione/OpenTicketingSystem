@@ -1,9 +1,6 @@
 phpMyAdmin/*
 databasehandlers/*
 _h5ai/*
-settingss.conf
-settings.conf
 phpmyadmin/*
-core/*
 functionlists/accountinfofunctionlistold.php
 !.gitignore
