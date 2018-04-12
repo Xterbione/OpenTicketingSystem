@@ -119,10 +119,10 @@ $groupnum = $key->Groupnum;
           <td>".htmlspecialchars($key->User_ID, ENT_QUOTES)."</td>
           <td><button type='submit' class='mdl-button mdl-js-button mdl-button--raised mdl-button--accent'>toepassen</button></td>
             </form>
-          <form class='' action='peruserticketview.php' method='post'>
-          <input type='hidden' name='vuid' value='".htmlspecialchars($key->User_ID, ENT_QUOTES)."'>
-          <td><button class='mdl-button mdl-js-button mdl-button--raised mdl-button--accent'>tickets</button></td>
-          </form>
+<td>
+        <a href='peruserticketview.php?vuid=".htmlspecialchars($key->User_ID, ENT_QUOTES)."'>
+          <button class='mdl-button mdl-js-button mdl-button--raised mdl-button--accent'>tickets</button>
+          </a></td>
               <form class='' action='edituserpasswd.php' method='post'>
               <input type='hidden' name='uidedit' value='".htmlspecialchars($key->User_ID, ENT_QUOTES)."'>
           <td><button class='mdl-button mdl-js-button mdl-button--raised mdl-button--accent'>wachtwoord aanpassen</button></td>
@@ -191,12 +191,11 @@ $groupnum = $key->Groupnum;
     }
 
 
-    public function changemail($uid,$newmail){
+    public function changemail($uidedit,$newmail){
         if (!$this->_db->update('Users', $uidedit, array('MailAddress' => $newmail))) {
             throw new Exception('er is een onverwachte fout opgetreden, het wachtwoord kon niet worden gewijzicht. :(');
             print_r($fields);
         }
-
     }
 
 

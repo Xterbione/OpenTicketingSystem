@@ -96,6 +96,7 @@ ini_set('display_errors', 1);
                   <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">wachtwoord wijzigen</button>
                </a><br>
 
+
                <form class="" action="changemymail.php" method="post">
 
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="" >
@@ -110,6 +111,7 @@ ini_set('display_errors', 1);
           </div>
           </div>
           <div class="item2profile" style="text-align: center;">
+            <p style="color:red;"><?php echo session::flash('melding'); ?></p>
             <h3 style="color: #FF0082;">totaal aantal tickets</h3>
             <h1 style="font-weight: 400;"><?php echo $ticketing->getticketcountbyid($user->data()->User_ID); ?></h1>
             <h3 style="color: #FF0082">totaal aantal comments</h3>

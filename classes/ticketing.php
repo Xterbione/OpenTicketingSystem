@@ -13,7 +13,8 @@ class ticketing
         // print_r($data->results());
         if ($data->count() !== 0) {
             foreach ($data->results() as $key) {
-                echo '<li class="btnround" style="width: auto; height: auto; padding: 12px 15px; float: left; cursor: pointer;" data-filter=".' . htmlspecialchars($key->onderwerptitel, ENT_QUOTES) . '"> <span>' .htmlspecialchars($key->onderwerptitel, ENT_QUOTES). '</span></li>';
+                echo '<li class="btnround" style="overflow: visible; width: auto; height: auto; padding: 12px 15px; float: left; cursor: pointer; display: flex; flex-wrap: no-wrap;" data-filter=".' . htmlspecialchars($key->onderwerptitel, ENT_QUOTES) . '"> <span>' .htmlspecialchars($key->onderwerptitel, ENT_QUOTES). '
+                <div style="display: inline-block; max-width: 1px; max-height: 1px;"><div style="min-height: 25px; min-width: 25px; border-radius: 100%; background-color: red; position: relative; top: -20px; left: 10px; display: flex; justify-content: center; align-items: center;">X</div></span></li>';
             }
         } else {
             echo "<p style='color:black;'> u heeft nog geen onderwerpen toegevoegd </p>";
@@ -218,7 +219,7 @@ class ticketing
     {
         $data = $this->_db->get('tickets', array('Ticket_ID', '=', $tid));
         // print_r($data->results());
-
+        $files = new File();
         if ($data->count() !== 0) {
             foreach ($data->results() as $key) {
               $creatorid = $key->Creator_ID;
@@ -274,12 +275,15 @@ class ticketing
             echo "
             <form class='' action='closeticket.php' method='post'>
             <input type='hidden' name='tid' value='". $key->Ticket_ID ."'>
-            <button type='submit' style='margin-left:30px;' class='mdl-button mdl-js-button mdl-button--raised'>Ticket Sluiten</button>
+            <button type='submit' style='margin-left:0px;' class='mdl-button mdl-js-button mdl-button--raised'>Ticket opgelost</button>
             </form>
             ";
           }
             echo "
             <p style='float:right;'>". htmlspecialchars($key->aanmaakdatum, ENT_QUOTES)."</p>
+            <p> gekoppelde items:</p>";
+            $files->getticketitemkoppeling($tid);
+          echo  "
           </div>
         <div class='mdl-card__menu'>
       </div>
@@ -291,7 +295,7 @@ class ticketing
             }
 
         } else {
-            echo "<p style='color:black; margin: 0 auto;'>er zijn mogelijk nog geen tickets aangemaakt</p>";
+            echo "<p class='comment' style='color:black; margin: 0 auto;'>er zijn mogelijk nog geen tickets aangemaakt</p>";
         }
     }
 

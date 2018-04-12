@@ -11,6 +11,7 @@
     $ticketing = new ticketing();
     $ustatus = $user->data()->Groupnum;
     $settinghandler = new settinghandler();
+    $files = new File();
     $cuid = $ticketing->getticketcreatorbyid($tid);
     if ($user->isloggedin()) {
       if ($uid == $cuid OR $ustatus == 1) {
@@ -135,6 +136,14 @@ if ($tstatus == 'open' OR $tstatus == 'behandelen') {?>
         <h3>Reageren:</h3>
         <textarea name="comment" id="comment" rows="4" cols="50"></textarea><br>
         <input type="hidden" name="ticketid" id="ticketid" value="<?php echo $tid; ?>">
+        <?php if ($user->data()->Groupnum == '1') {
+          ?>
+          <select name="kennisitem">
+            <option value="none" selected disabled>selecteer kennisitem</option>
+            <?php $File = new File(); $File->getallkennisitemName(); ?>
+          </select>
+          <?php
+        } ?>
         <button type="submit" id="formsubmit" class="formsubmit mdl-button mdl-js-button mdl-button--raised">
           plaatsen
         </button>

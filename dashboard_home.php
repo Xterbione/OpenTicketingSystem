@@ -37,10 +37,10 @@
    <head>
      <meta charset="utf-8">
      <title>Brainconsultant - ticketing system</title>
-     <link rel="stylesheet" href="css/material.min.css">
      <script src="script/material.min.js"></script>
      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.pink-light_blue.min.css" />
+     <link rel="stylesheet" href="css/material.min.css">
+     <link rel="stylesheet" href="<?php echo $settinghandler->GetMenuCustom(); ?>" />
      <link rel="stylesheet" href="css/material-extends.css">
      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
      <meta property="og:image" content="https://www.brainconsultant.nl/wp-content/uploads/2016/11/favicon.png">
@@ -79,7 +79,7 @@ vAxis : { textStyle : { fontSize: 10} },
          </script>
          <style media="screen">
            .footerribon{
-             background-color: <?php echo $settinghandler->GetBrandCollor; ?>;
+             background-color: <?php echo $settinghandler->GetBrandCollor(); ?>;
            }
          </style>
    </head>
@@ -135,10 +135,10 @@ vAxis : { textStyle : { fontSize: 10} },
 
 
           <div class="homewindow demo-card-wide mdl-card mdl-shadow--2dp">
-            <button class="mdl-button mdl-js-button mdl-button--primary ticketfilter datafilterselector"> Kies DataFilter</button>
-            <h3 style="height: 100px; margin: auto;">Recent aangemaakte tickets</h3>
+            <button class="mdl-button mdl-js-button mdl-button--primary ticketfilter datafilterselector" style="color: <?php echo $settinghandler->GetBrandCollor2(); ?>;"> Kies DataFilter</button>
+            <h3 style="height: 100px; margin: auto; color: <?php echo $settinghandler->GetBrandCollor2(); ?> !important;">Recent aangemaakte tickets</h3>
              <div class="scrolldiv2">
-               <div class="ticketinfodrawer">
+               <div class="ticketinfodrawer" style="background-color:<?php echo $settinghandler->GetBrandCollor(); ?> !important;">
                  <p style="color: white; text-align: center; padding-top: 15px;">
             <?php echo session::flash('tclosed');
                   echo session::flash('gearchiveerd');
@@ -152,8 +152,8 @@ vAxis : { textStyle : { fontSize: 10} },
              <div class="footerribon"></div>
            </div>
            <div class="demo-card-wide mdl-card mdl-shadow--2dp homewindow1">
-             <h3>Ticket rapportage</h3>
-             <p style="margin-top: -25px;">rapportage van afgelopen 31 dagen.</p>
+             <h3 style="color: <?php echo $settinghandler->GetBrandCollor2(); ?> !important; ">Ticket rapportage</h3>
+             <p style="margin-top: -25px; color: <?php echo $settinghandler->GetBrandCollor2(); ?> !important;">rapportage van afgelopen 31 dagen.</p>
                <div class="chart_div">
                  <div id="piechart_div" class="chart row" style=" width: 350px !important; position: absolute; left: 0;"></div>
                  <div id="barchart_div" class="chart row" style="width: 350px !important;position: absolute; right: 0;"></div>
@@ -162,8 +162,8 @@ vAxis : { textStyle : { fontSize: 10} },
            </div>
 
            <div class="demo-card-wide mdl-card mdl-shadow--2dp homewindow2">
-             <h3 style="">Ticket control tool</h3>
-             <h3 style="">onderwerp toevoegen:</h3><br>
+             <h3 style="color: <?php echo $settinghandler->GetBrandCollor2(); ?> !important;">Ticket control tool</h3>
+             <h3 style="color: <?php echo $settinghandler->GetBrandCollor2(); ?> !important;">onderwerp toevoegen:</h3><br>
              <form name="insertonderwerp" class="" action="" method="post">
                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label " >
                    <input class="mdl-textfield__input" type="text" name="onderwerptitel" id="onderwerptitel">
@@ -190,7 +190,7 @@ vAxis : { textStyle : { fontSize: 10} },
              <h3 class="closepopupwindow1" style="float: left; font-size: 30px; margin-left: 20px; cursor: pointer;">✖</h3>
              <h2 style="text-align: center;">selecteer een filter</h2>
               <div class="scrolldifi">
-                  <ul style="list-style: none;  width: 100%;    height: auto;  overflow: hidden; margin-left: -29px;">
+                  <ul style="list-style: none;  width: 100%;    height: auto; overflow: visible; margin-left: -29px;">
                   <li class="btnround" style="width: auto; height: auto; padding: 12px 15px; float: left; cursor: pointer;" data-filter="all"> <span> alles weergeven</span></li>
                    <?php $ticketing = new ticketing();
                    $ticketing->getsubjects(); ?>

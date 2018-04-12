@@ -136,10 +136,33 @@ class settinghandler {
 
              }
          }
+         public function GetBrandCollor2()
+         {
+             $data = $this->_db->get('settings', array('SettingName', '=', 'BrandCollor2'));
+             // print_r($data->results());
+             if ($data->count() !== 0) {
+                 foreach ($data->results() as $key) {
+                     return $key->SettingValue;
+                 }
+             } else {
 
+             }
+         }
          public function GetCompanyName()
          {
              $data = $this->_db->get('settings', array('SettingName', '=', 'CompanyName'));
+             // print_r($data->results());
+             if ($data->count() !== 0) {
+                 foreach ($data->results() as $key) {
+                     return $key->SettingValue;
+                 }
+             } else {
+
+             }
+         }
+         public function GetMenuCustom()
+         {
+             $data = $this->_db->get('settings', array('SettingName', '=', 'MenuCustomize'));
              // print_r($data->results());
              if ($data->count() !== 0) {
                  foreach ($data->results() as $key) {

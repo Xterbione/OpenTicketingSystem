@@ -35,6 +35,12 @@ if ($user->data()->Groupnum == 1) {
      .demo-card-wide > .mdl-card__menu {
        color: #fff;
      }
+
+     @media all and (max-height: 820px) {
+       .footerribon{
+         display: none;
+       }
+     }
      </style>
      <!-- menu div -->
      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -78,7 +84,7 @@ if ($user->data()->Groupnum == 1) {
                                   <?php include "includes/components/notifydrawer.php"; ?>
 
 
-           <div class="demo-card-wide mdl-card mdl-shadow--2dp profilewindow wrapperprofile" style="padding: 20px;">
+           <div class="demo-card-wide mdl-card mdl-shadow--2dp profilewindow wrapperprofile" style="padding: 20px; min-height: 1174 px; overflow: scroll; overflow-x: hidden;">
              <div class="profilecontainer">
                <div class="item1profile">
                 <h1 style="text-align:center; color: #FF0082;">Mail Instellingen</h1>
@@ -151,11 +157,21 @@ if ($user->data()->Groupnum == 1) {
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                   <input class="mdl-textfield__input" type="text" name="BrandCollor" id="sample3" value="<?php echo $settinghandler->GetBrandCollor(); ?>">
-                  <label class="mdl-textfield__label" for="sample3">Kleurcode BrandCollor</label>
+                  <label class="mdl-textfield__label" for="sample3">Kleurcode voor footerribons (BrandCollor)</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" name="BrandCollor2" id="sample3" value="<?php echo $settinghandler->GetBrandCollor2(); ?>">
+                  <label class="mdl-textfield__label" for="sample3">Kleurcode voor koptext (BrandCollor2)</label>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                   <input class="mdl-textfield__input" name="CompanyName" type="text" id="sample3" value="<?php echo $settinghandler->GetCompanyName(); ?>">
                   <label class="mdl-textfield__label" for="sample3">BedrijfsNaam</label>
+                </div>
+                <p>u kunt menu kleuren uitkiezen bij de volgende link: <a href="https://getmdl.io/customize/index.html">LINK</a><br></p>
+                <p>wanneer u een kleur gekozen heeft,<br> kopieert u de link onder aan de pagina, en plaatst u deze hier.</p>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" name="MenuCustom" type="text" id="sample3" value="<?php echo $settinghandler->GetMenuCustom(); ?>">
+                  <label class="mdl-textfield__label" for="sample3">Link</label>
                 </div><br>
                 <button type="submit" class="mdl-button mdl-js-button mdl-button--primary">
                 doorvoeren
@@ -180,7 +196,7 @@ if ($user->data()->Groupnum == 1) {
                 </div><br><br>
                 <p>als u merkt dat deze gegevens niet kloppen, raden wij u aan het wachtwoord van de bron-account te wijzigen.</p>
               </div>
-                <div class="footerribon" style="width: 100%; float: left; margin-left: -20px; margin-top: 300px;"></div>
+                <div class="footerribon" style="width: 100%; float: left; margin-left: -20px; margin-top: 300px; margin-bottom: 0px;"></div>
               </div>
             </div>
 

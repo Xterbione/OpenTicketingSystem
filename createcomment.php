@@ -6,12 +6,15 @@ require_once 'core/init.php';
   $tid = Input::get('ticketid');
   $notify = new notify();
   $user = new user();
+  $files = new File();
   $ticketing = new ticketing();
   if ($user->isloggedin()) {
     if ($user->data()->Groupnum == 1 OR $user->data()->User_ID == $ticketing->getticketcreatorbyid($tid)) {
       # code...
           $input = '';
           $input = Input::get('comment');
+          $kennisitem = '';
+          $kennisitem = Input::get('kennisitem');
           print_r($input);
           if (Input::exists()) {
             if (Input::get('comment') != '') {
@@ -23,6 +26,15 @@ require_once 'core/init.php';
                   'Comment' => $input
                   ));
 
+                  if ($kennisitem !== "") {
+                    if ($files->checkitem($kennisitem)) {
+
+                       $files->additemkoppeling(array(
+                           'Item_ID'  => $kennisitem,
+                           'Ticket_ID'  => $tid
+                           ));
+                        }
+                      }
 
                     $notify->notifyprocessforticketing($tid);
 

@@ -3,7 +3,7 @@ class config {
 
       public static function get($path = null) {
         if($path) {
-          $config = $GLOBALS['config'];
+          $config = getconfig();
           $path = explode('/', $path); //converts the string to an array. / is the seperator fo going deeper
 
 

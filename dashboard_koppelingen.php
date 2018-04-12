@@ -34,7 +34,7 @@
      <link rel="stylesheet" href="css/material.min.css">
      <script src="script/material.min.js"></script>
      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.pink-light_blue.min.css" />
+     <link rel="stylesheet" href="<?php echo $settinghandler->GetMenuCustom(); ?>" />
      <link rel="stylesheet" href="css/material-extends.css">
    </head>
    <body>
@@ -68,6 +68,11 @@
           </a>
 
          </div>
+         <style media="screen">
+           .footerribon{
+             background-color: <?php echo $settinghandler->GetBrandCollor(); ?>;
+           }
+         </style>
        </header>
        <div class="mdl-layout__drawer" >
          <div class="circleimage" style="display: inline-block;"></div>

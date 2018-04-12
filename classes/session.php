@@ -14,6 +14,7 @@ class session {
   public static function get($name){
     return $_SESSION[$name];
   }
+  
 
 
 

@@ -50,29 +50,31 @@ if (Input::exists()) {
     'UserName' => array(
       'required' => true,
       'min'      => 2,
-      'max'      => 50,
+      'max'      => 150,
       'unique'   => 'Users'
     ),
     'name' => array(
       'required' => true,
       'min'      => 1,
-      'max'      => 50,
+      'max'      => 150,
 
     ),
     'MailAddress' => array(
 
       'required' => true,
       'min'      => 6,
-      'max'      => 50,
+      'max'      => 150,
       'unique'   => 'Users'
     ),
     'password' => array(
       'required' => true,
-      'min'      => 4
+      'min'      => 4,
+      'max'      =>254
     ),
     'password_again' => array(
       'required' => true,
       'min'      => 4,
+      'max'      => 254,
       'matches'  => 'password'
     )
   ));

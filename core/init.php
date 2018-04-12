@@ -1,10 +1,12 @@
 <?php
 session_start();
-$GLOBALS['config'] = array(
+function getconfig() {
+
+return array(
   'mysql' => array(
     'host'=> '127.0.0.1',
     'username' => 'root',
-    'password' => '',
+    'password' => 'Bk1996zs',
     'db' => 'DatabaseWebApp'
   ),
   'remember' => array(
@@ -18,6 +20,7 @@ $GLOBALS['config'] = array(
     'token_name' => 'token'
   )
 );
+}
 
 spl_autoload_register(
 

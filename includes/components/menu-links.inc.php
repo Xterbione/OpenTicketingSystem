@@ -6,6 +6,7 @@ $user = new user();
 if ($ustatus == 1) { ?>
 <a class="mdl-navigation__link" href="dashboard_gebruikers.php"><img class="navicon" src="icons/tickets.svg" alt="settings icon" >Gebruikers</a>
 <a class="mdl-navigation__link" href="dashboard_koppelingen.php"><img class="navicon" src="icons/koppeling.png" alt="settings icon" >Gekoppeld</a>
+<a class="mdl-navigation__link" href="dashboard_kennisitems.php"><img class="navicon" src="icons/kennisitem.png" alt="settings icon" >kennisbank</a>
 <!--<a class="mdl-navigation__link" href="#" ><img class="navicon" src="icons/chart.png" alt="settings icon" >Rapporten (N/A)</a>-->
 <a class="mdl-navigation__link" href="settings.php"><img class="navicon" src="icons/appsettings.svg" alt="settings icon">APP instellingen</a>
 <?php }
