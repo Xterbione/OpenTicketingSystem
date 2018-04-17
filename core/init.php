@@ -6,7 +6,7 @@ return array(
   'mysql' => array(
     'host'=> '127.0.0.1',
     'username' => 'root',
-    'password' => 'Bk1996zs',
+    'password' => '',
     'db' => 'DatabaseWebApp'
   ),
   'remember' => array(
