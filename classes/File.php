@@ -74,13 +74,13 @@ class File {
         }
     }
 
-    public function additemkoppeling($fields = array())
-    {
-        if (!$this->_db->insert('Item_CommentLink', $fields)) {
-            throw new Exception('er is een onverwachte fout opgetreden, het kennisitem kon niet worden gekoppeld. :( vardump:');
-            print_r($fields);
-        }
-    }
+    // public function additemkoppeling($fields = array())
+    // {
+    //     if (!$this->_db->insert('Item_CommentLink', $fields)) {
+    //         throw new Exception('er is een onverwachte fout opgetreden, het kennisitem kon niet worden gekoppeld. :( vardump:');
+    //         print_r($fields);
+    //     }
+    // }
 
     public function getallkennisitems()
     {
@@ -91,6 +91,7 @@ class File {
                echo "<tr>
                  <td class='mdl-data-table__cell--non-numeric'>".htmlspecialchars($key->Item_ID, ENT_QUOTES)."</td>
                  <td class='mdl-data-table__cell--non-numeric'>".htmlspecialchars($key->Item_Name, ENT_QUOTES)."</td>
+                  <td class='mdl-data-table__cell--non-numeric'>".$this->getFilelocation($key->Item_ID)."</td>
                  <td class='mdl-data-table__cell--non-numeric'> <a style='color: blue;' href='uploads/kennisitems/".htmlspecialchars($key->FileName, ENT_QUOTES)."'>".htmlspecialchars($key->FileName, ENT_QUOTES)."</a></td>
                   <td class='mdl-data-table__cell--non-numeric'>
                   <form action='deletekennisitem.php' method='POST'>
@@ -177,28 +178,19 @@ class File {
         }
 
 
-        public function getticketitemkoppeling($tid)
-        {
 
-              $data = $this->_db->get('Item_CommentLink', array('Ticket_ID' , '=', $tid));
-              // print_r($data->results());
-              if ($data->count() !== 0) {
-                  foreach ($data->results() as $key) {
-                    $IID = $key->Item_ID;
-                    $data2 = $this->_db->get('KennisItems', array('Item_ID' , '=', $IID));
+        public function getticketitemkoppeling($IID)
+        {
+                    $data = $this->_db->get('KennisItems', array('Item_ID' , '=', $IID));
                     // print_r($data->results());
-                    if ($data2->count() !== 0) {
-                      foreach ($data2->results() as $key2) {
-                        echo "<a href='uploads/kennisitems/".$key2->FileName."'>".$key2->Item_Name."</a><br>";
+                    if ($data->count() !== 0) {
+                      foreach ($data->results() as $key) {
+                        echo "<a href='".$this->getFilelocation($IID).$key->FileName."'>".$key->Item_Name."</a><br>";
                       }
                     } else {
                       echo "het gekoppelde item is mogelijk verwijderd<br>";
                     }
-                  }
-              } else {
-                  echo "<p style='color:black;'></p>";
-              }
-          }
+        }
 
 
 }

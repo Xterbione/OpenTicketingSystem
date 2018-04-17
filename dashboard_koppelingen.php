@@ -36,6 +36,7 @@
      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
      <link rel="stylesheet" href="<?php echo $settinghandler->GetMenuCustom(); ?>" />
      <link rel="stylesheet" href="css/material-extends.css">
+              <link rel="shortcut icon" type="image/png" href="icons/favicon.png"/>
    </head>
    <body>
      <div class="loader" style="height: 100%; width: 100%; background: white; position: absolute; z-index: 999; text-align: center; ">

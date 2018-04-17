@@ -8,6 +8,7 @@
     <script src="script/material.min.js"></script>
     <link rel="stylesheet" href="css/material-extends.css">
         <link rel="shortcut icon" type="image/png" href="icons/favicon.png"/>
+                 <link rel="shortcut icon" type="image/png" href="icons/favicon.png"/>
 
   </head>
   <body>
@@ -112,13 +113,13 @@ if (Input::exists()) {
 </p>
           <form action="" method="post">
             <div class="inputholder">
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-             <label class="mdl-textfield__label" for="UserName">Gebruikersnaam</label><br>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <label class="mdl-textfield__label" for="UserName">gebruikersnaam...</label>
              <input class="mdl-textfield__input" type="text" name="UserName" id="UserName" value="<?php echo escape(Input::get('UserName'));?>" autocomplete="off"></input><br>
               </div>
 
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-             <label class="mdl-textfield__label" for="name">naam + achternaam</label><br>
+             <label class="mdl-textfield__label" for="name">naam + achternaam</label>
              <input class="mdl-textfield__input" type="text" name="name" id="name" value="<?php echo escape(Input::get('name'));?>"></input><br>
              </div>
              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

@@ -18,23 +18,28 @@ require_once 'core/init.php';
           print_r($input);
           if (Input::exists()) {
             if (Input::get('comment') != '') {
+              if ($kennisitem !== "") {
+                if ($files->checkitem($kennisitem)) {
+                  if ($user->data()->Groupnum == 1) {
+                    echo "kennisitemcheck OK! <br>";
+                  } else {
+                    echo "permissioncheck not ok, removing kennisitem from input";
+                  $kennisitem = 0;
+                  }
+                } else {
+                  echo "kennisitemcheck not ok, removing kennisitem from input";
+                  $kennisitem = 0;
+                }
+              }
           try {
               $ticketing->createcomment(array(
                   'Ticket_ID'  => $tid,
                   'User_ID'  => $uid,
                   'PostDatum' => $date,
-                  'Comment' => $input
+                  'Comment' => $input,
+                  'Item_ID' => $kennisitem
                   ));
 
-                  if ($kennisitem !== "") {
-                    if ($files->checkitem($kennisitem)) {
-
-                       $files->additemkoppeling(array(
-                           'Item_ID'  => $kennisitem,
-                           'Ticket_ID'  => $tid
-                           ));
-                        }
-                      }
 
                     $notify->notifyprocessforticketing($tid);
 

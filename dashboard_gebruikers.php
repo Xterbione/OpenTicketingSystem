@@ -37,6 +37,7 @@
      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
      <link rel="stylesheet" href="<?php echo $settinghandler->GetMenuCustom(); ?>" />
      <link rel="stylesheet" href="css/material-extends.css">
+              <link rel="shortcut icon" type="image/png" href="icons/favicon.png"/>
    </head>
    <body>
      <div class="loader" style="height: 100%; width: 100%; background: white; position: absolute; z-index: 999; text-align: center; ">
@@ -69,7 +70,7 @@
             .footerribon{
               background-color: <?php echo $settinghandler->GetBrandCollor(); ?>;
             }
-          </style>  
+          </style>
          </div>
        </header>
        <div class="mdl-layout__drawer" >
@@ -89,15 +90,15 @@
 
 
        <!-- ticket window -->
-          <div class="ticketwindow demo-card-wide mdl-card mdl-shadow--2dp">
+          <div style="overflow-x: scroll;" class="ticketwindow demo-card-wide mdl-card mdl-shadow--2dp">
             <!-- Expandable Textfield -->
 
 
 
-            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp usertable">
+            <table style="overflow-x: scroll;" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp usertable">
 
               <thead>
-                <tr class="clickable-row" data-href='url://Brainconsultant.nl'>
+                <tr  class="clickable-row" data-href='url://Brainconsultant.nl'>
                   <th></th>
                   <th class="mdl-data-table__cell--non-numeric">Mail adres</th>
                   <th class="mdl-data-table__cell--non-numeric">Gebruikersnaam</th>

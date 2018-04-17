@@ -14,7 +14,7 @@ class ticketing
         if ($data->count() !== 0) {
             foreach ($data->results() as $key) {
                 echo '<li class="btnround" style="overflow: visible; width: auto; height: auto; padding: 12px 15px; float: left; cursor: pointer; display: flex; flex-wrap: no-wrap;" data-filter=".' . htmlspecialchars($key->onderwerptitel, ENT_QUOTES) . '"> <span>' .htmlspecialchars($key->onderwerptitel, ENT_QUOTES). '
-                <div style="display: inline-block; max-width: 1px; max-height: 1px;"><div style="min-height: 25px; min-width: 25px; border-radius: 100%; background-color: red; position: relative; top: -20px; left: 10px; display: flex; justify-content: center; align-items: center;">X</div></span></li>';
+                <div style="display: inline-block; max-width: 1px; max-height: 1px;"><a href="confirmdeletionsubject.php?SID='.$key->onderwerpnr.'" style="    text-decoration: none; color: white;"> <div onclick="" style="min-height: 25px; min-width: 25px; border-radius: 100%; background-color: red; position: relative; top: -20px; left: 10px; display: flex; justify-content: center; align-items: center;">X</div></a></span></li>';
             }
         } else {
             echo "<p style='color:black;'> u heeft nog geen onderwerpen toegevoegd </p>";
@@ -106,7 +106,7 @@ class ticketing
                 <div class='column' style='margin-left: 30px;'  class='textwrapperticketwindow'>
                    <h3>status:</h3><p style='color: black;'>".   htmlspecialchars($key->Status, ENT_QUOTES) ."</p>
                 </div>
-                 <a href='ticketview.php?ticketid=". htmlspecialchars($key->Ticket_ID, ENT_QUOTES)."' <button class='mdl-button mdl-js-button mdl-button--raised mdl-button--accent' style='position: relative; top: 50px;'> naar ticket
+                 <a href='ticketview.php?ticketid=". htmlspecialchars($key->Ticket_ID, ENT_QUOTES)."' <button  class='naarticket mdl-button mdl-js-button mdl-button--raised mdl-button--accent' style='position: relative; top: 50px;'> naar ticket
                  </button></a>
                </div>
           ";
@@ -137,7 +137,7 @@ class ticketing
                 <div class='column' style='margin-left: 30px;'  class='textwrapperticketwindow'>
                    <h3>status:</h3><p style='color: black;'>".   htmlspecialchars($key->Status, ENT_QUOTES) ."</p>
                 </div>
-                 <a href='ticketview.php?ticketid=". htmlspecialchars($key->Ticket_ID, ENT_QUOTES)."' <button class='mdl-button mdl-js-button mdl-button--raised mdl-button--accent' style='position: relative; top: 50px;'> naar ticket
+                 <a href='ticketview.php?ticketid=". htmlspecialchars($key->Ticket_ID, ENT_QUOTES)."' <button class='naarticket mdl-button mdl-js-button mdl-button--raised mdl-button--accent' style='position: relative; top: 50px;'> naar ticket
                  </button></a>
                </div>
               </div>";
@@ -168,7 +168,7 @@ class ticketing
                 <div class='column' style='margin-left: 30px;'  class='textwrapperticketwindow'>
                    <h3>status:</h3><p style='color: black;'>".   htmlspecialchars($key->Status, ENT_QUOTES) ."</p>
                 </div>
-                 <a href='ticketview.php?ticketid=". htmlspecialchars($key->Ticket_ID, ENT_QUOTES)."' <button class='mdl-button mdl-js-button mdl-button--raised mdl-button--accent' style='position: relative; top: 50px;'> naar ticket
+                 <a href='ticketview.php?ticketid=". htmlspecialchars($key->Ticket_ID, ENT_QUOTES)."' <button class='naarticket mdl-button mdl-js-button mdl-button--raised mdl-button--accent' style='position: relative; top: 50px;'> naar ticket
                  </button></a>
                </div>
               </div>";
@@ -202,7 +202,7 @@ class ticketing
                 <div class='column' style='margin-left: 30px;'  class='textwrapperticketwindow'>
                    <h3>status:</h3><p style='color: black;'>".  htmlspecialchars($key->Status, ENT_QUOTES) ."</p>
                 </div>
-                 <a href='ticketview.php?ticketid=".htmlspecialchars($key->Ticket_ID, ENT_QUOTES)."' <button class='mdl-button mdl-js-button mdl-button--raised mdl-button--accent' style='position: relative; top: 50px;'> naar ticket
+                 <a href='ticketview.php?ticketid=".htmlspecialchars($key->Ticket_ID, ENT_QUOTES)."' <button class='naarticket mdl-button mdl-js-button mdl-button--raised mdl-button--accent' style='position: relative; top: 50px;'> naar ticket
                  </button></a>
                </div>
               </div>";
@@ -219,7 +219,7 @@ class ticketing
     {
         $data = $this->_db->get('tickets', array('Ticket_ID', '=', $tid));
         // print_r($data->results());
-        $files = new File();
+        // $files = new File();
         if ($data->count() !== 0) {
             foreach ($data->results() as $key) {
               $creatorid = $key->Creator_ID;
@@ -281,8 +281,7 @@ class ticketing
           }
             echo "
             <p style='float:right;'>". htmlspecialchars($key->aanmaakdatum, ENT_QUOTES)."</p>
-            <p> gekoppelde items:</p>";
-            $files->getticketitemkoppeling($tid);
+          ";
           echo  "
           </div>
         <div class='mdl-card__menu'>
@@ -304,6 +303,7 @@ class ticketing
 
     public function viewcommentsbyid($tid)
     {
+      $files = new File();
         $data = $this->_db->get('Ticket_Comments', array('Ticket_ID', '=', $tid));
         // print_r($data->results());
 
@@ -326,8 +326,16 @@ class ticketing
         </div>
         <div class='mdl-card__supporting-text'>
           <p style='white-space: pre-wrap; color:black;'>". htmlspecialchars($key->Comment, ENT_QUOTES) ." </p>
-<hr></hr>
-<p style='float:right;'>". htmlspecialchars($key->PostDatum, ENT_QUOTES) ."</p>
+          <hr></hr>
+          <p style='float:right;'>". htmlspecialchars($key->PostDatum, ENT_QUOTES) ."</p>
+        ";
+        if ($key->Item_ID !== '0') {
+          echo "<p> gekoppelde Items:<br>";
+          $files->getticketitemkoppeling($key->Item_ID);
+          echo "</p>";
+        } else {
+        }
+        echo "
         </div>
       <div class='mdl-card__menu'></div>
       </div>";
@@ -344,7 +352,7 @@ class ticketing
     public function createcomment($fields = array())
     {
         if (!$this->_db->insert('Ticket_Comments', $fields)) {
-            throw new Exception('er is een onverwachte fout opgetreden, je onderwerp kon niet worden toegevoegd. :( vardump:');
+            throw new Exception('er is een onverwachte fou  t opgetreden, je onderwerp kon niet worden toegevoegd. :( vardump:');
             print_r($fields);
         }
     }
@@ -508,7 +516,7 @@ class ticketing
             <div class='column' style='margin-left: 30px; padding-bottom: 10px; width: 60px;'  class='textwrapperticketwindow'>
                <h3>status:</h3><p style='color: black;'>".   htmlspecialchars($key->Status, ENT_QUOTES) ."</p>
             </div>
-             <a style='margin-bottom: 6px; margin-top: 40px; margin-left: 15px;' href='ticketview.php?ticketid=". htmlspecialchars($key->Ticket_ID, ENT_QUOTES)."' <button class='mdl-button mdl-js-button mdl-button--raised mdl-button--accent' style='position: relative; top: 50px;'> naar ticket
+             <a style='margin-bottom: 6px; margin-top: 40px; margin-left: 15px;' href='ticketview.php?ticketid=". htmlspecialchars($key->Ticket_ID, ENT_QUOTES)."' <button class='naarticket mdl-button mdl-js-button mdl-button--raised mdl-button--accent' style='position: relative; top: 50px;'> naar ticket
              </button></a>
              <a style=' margin-left: 15px; margin-bottom: 15px;' href='dearchiveerticket.php?tid=". htmlspecialchars($key->Ticket_ID, ENT_QUOTES)."' <button class='mdl-button mdl-js-button mdl-button--raised mdl-button--accent' style='position: relative; top: 50px;'> dearchiveren
              </button></a>
@@ -547,7 +555,7 @@ class ticketing
                 <div class='column' style='margin-left: 30px; padding-bottom: 10px; width: 60px;'  class='textwrapperticketwindow'>
                    <h3>status:</h3><p style='color: black;'>".   htmlspecialchars($key->Status, ENT_QUOTES) ."</p>
                 </div>
-                 <a style='margin-bottom: 6px; margin-top: 40px; margin-left: 15px;' href='ticketview.php?ticketid=". htmlspecialchars($key->Ticket_ID, ENT_QUOTES)."' <button class='mdl-button mdl-js-button mdl-button--raised mdl-button--accent' style='position: relative; top: 50px;'> naar ticket
+                 <a style='margin-bottom: 6px; margin-top: 40px; margin-left: 15px;' href='ticketview.php?ticketid=". htmlspecialchars($key->Ticket_ID, ENT_QUOTES)."' <button class='naarticket mdl-button mdl-js-button mdl-button--raised mdl-button--accent' style='position: relative; top: 50px;'> naar ticket
                  </button></a>
                  ";
                  if ($key->Status == 'gesloten') {
@@ -592,7 +600,7 @@ class ticketing
           <td class='mdl-data-table__cell--non-numeric'>".htmlspecialchars($key->Status, ENT_QUOTES)."</td>
             <td class='mdl-data-table__cell--non-numeric'>".htmlspecialchars($key->Creator_ID, ENT_QUOTES)."</td>
           <td>
-          <a style='margin-bottom: 6px; margin-top: 40px; margin-left: 15px;' href='ticketview.php?ticketid=". htmlspecialchars($key->Ticket_ID, ENT_QUOTES)."' <button class='mdl-button mdl-js-button mdl-button--raised mdl-button--accent' style='position: relative; top: 50px;'> naar ticket
+          <a style='margin-bottom: 6px; margin-top: 40px; margin-left: 15px;' href='ticketview.php?ticketid=". htmlspecialchars($key->Ticket_ID, ENT_QUOTES)."' <button class='naarticket mdl-button mdl-js-button mdl-button--raised mdl-button--accent' style='position: relative; top: 50px;'> naar ticket
           </button></a>
           </td>
           <td>
@@ -637,7 +645,7 @@ class ticketing
           <td class='mdl-data-table__cell--non-numeric'>".htmlspecialchars($key->Status, ENT_QUOTES)."</td>
             <td class='mdl-data-table__cell--non-numeric'>".htmlspecialchars($key->Creator_ID, ENT_QUOTES)."</td>
           <td>
-          <a style='margin-bottom: 6px; margin-top: 40px; margin-left: 15px;' href='ticketview.php?ticketid=". htmlspecialchars($key->Ticket_ID, ENT_QUOTES)."' <button class='mdl-button mdl-js-button mdl-button--raised mdl-button--accent' style='position: relative; top: 50px;'> naar ticket
+          <a style='margin-bottom: 6px; margin-top: 40px; margin-left: 15px;' href='ticketview.php?ticketid=". htmlspecialchars($key->Ticket_ID, ENT_QUOTES)."' <button class='naarticket mdl-button mdl-js-button mdl-button--raised mdl-button--accent' style='position: relative; top: 50px;'> naar ticket
           </button></a>
           </td>
           <td>
@@ -734,5 +742,13 @@ class ticketing
         if (!$this->_db->updatekoppeling('koppelingen', $koppelid, array('hide' => 0))) {
             throw new Exception('er is een onverwachte fout opgetreden, je ticket kon niet worden gesloten. :(');
         }
+    }
+
+    public function remsubject($SID)
+    {
+      if (!$this->_db->delete('onderwerpen', array('onderwerpnr', '=', $SID))) {
+          throw new Exception('er is een onverwachte fout opgetreden, kan opschonen van comments niet voltooien. :( @stage2');
+          print_r($fields);
+      }
     }
 }

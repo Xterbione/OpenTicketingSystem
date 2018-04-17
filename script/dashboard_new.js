@@ -81,5 +81,10 @@ function replaceURLWithHTMLLinks(text)
 replaceURLWithHTMLLinks(comments);
 
 
+window.remsubject = function (number){
+console.log(nummer);
+
+
+}
 
 //href for user table

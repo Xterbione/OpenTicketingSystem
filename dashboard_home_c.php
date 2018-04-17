@@ -21,6 +21,11 @@
      <link rel="stylesheet" href="css/material-extends.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
+   <style media="screen">
+     .footerribon{
+       background-color: <?php echo $settinghandler->GetBrandCollor(); ?>;
+     }
+   </style>
    <body>
      <div class="loader" style="height: 100%; width: 100%; background: white; position: absolute; z-index: 999; text-align: center; ">
        <img src="<?php echo $settinghandler->GetLogoLink(); ?>" class="brainlogoload" style="" alt="">

@@ -19,6 +19,7 @@
      <script src="script/material.min.js"></script>
      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
      <link rel="stylesheet" href="<?php echo $settinghandler->GetMenuCustom(); ?>" />
+              <link rel="shortcut icon" type="image/png" href="icons/favicon.png"/>
      <link rel="stylesheet" href="css/material-extends.css">
    </head>
    <body>
@@ -75,7 +76,7 @@
 
 
        <!-- ticket window -->
-          <div class="ticketwindow demo-card-wide mdl-card mdl-shadow--2dp">
+          <div style="overflow-x: scroll;" class="ticketwindow demo-card-wide mdl-card mdl-shadow--2dp">
             <h3 style="text-align: center;">melding: <?php echo session::flash('melding'); ?></h3>
 
             <?php
@@ -101,6 +102,7 @@
                 <tr class="clickable-row">
                   <th class="mdl-data-table__cell--non-numeric">Item ID</th>
                   <th class="mdl-data-table__cell--non-numeric">Item Name</th>
+                  <th class="mdl-data-table__cell--non-numeric">location</th>
                   <th class="mdl-data-table__cell--non-numeric">File</th>
                   <th class="mdl-data-table__cell--non-numeric">verwijderen</th>
                   <th>

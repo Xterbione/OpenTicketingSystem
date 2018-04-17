@@ -38,6 +38,11 @@ ini_set('display_errors', 1);
      .demo-card-wide > .mdl-card__menu {
        color: #fff;
      }
+     @media all and (max-height: 820px) {
+       .footerribon{
+         display: none;
+       }
+     }
      </style>
      <!-- menu div -->
      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -80,7 +85,7 @@ ini_set('display_errors', 1);
 
 
 
-           <div class="demo-card-wide mdl-card mdl-shadow--2dp profilewindow wrapperprofile" style="padding: 20px;">
+           <div class="demo-card-wide mdl-card mdl-shadow--2dp profilewindow wrapperprofile" style="padding: 20px; overflow-y: scroll;">
              <div class="profilecontainer">
                <div class="item1profile">
 

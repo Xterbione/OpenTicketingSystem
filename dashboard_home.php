@@ -81,6 +81,7 @@ vAxis : { textStyle : { fontSize: 10} },
            .footerribon{
              background-color: <?php echo $settinghandler->GetBrandCollor(); ?>;
            }
+           }
          </style>
    </head>
    <body>
@@ -130,9 +131,21 @@ vAxis : { textStyle : { fontSize: 10} },
 
             <?php include "includes/components/notifydrawer.php"; ?>
 
+            <div class="homewindowswrapper">
 
 
+            <div  class="demo-card-wide mdl-card mdl-shadow--2dp  popupwindow1" style="padding-bottom: 50px; padding: 15px;">
+              <h3 class="closepopupwindow1" style="float: left; font-size: 30px; margin-left: 20px; cursor: pointer;">✖</h3>
+              <h2 style="text-align: center;">selecteer een filter</h2>
+               <div class="scrolldifi">
+                   <ul style="list-style: none;  width: 100%;    height: auto; overflow: visible; margin-left: -29px;">
+                   <li class="btnround" style="width: auto; height: auto; padding: 12px 15px; float: left; cursor: pointer;" data-filter="all"> <span> alles weergeven</span></li>
 
+                    <?php $ticketing = new ticketing();
+                    $ticketing->getsubjects(); ?>
+                   </ul>
+              </div>
+            </div>
 
           <div class="homewindow demo-card-wide mdl-card mdl-shadow--2dp">
             <button class="mdl-button mdl-js-button mdl-button--primary ticketfilter datafilterselector" style="color: <?php echo $settinghandler->GetBrandCollor2(); ?>;"> Kies DataFilter</button>
@@ -184,19 +197,10 @@ vAxis : { textStyle : { fontSize: 10} },
                  <div class="footerribon"></div>
             </div>
 
+          </div>
 
 
-           <div class="demo-card-wide mdl-card mdl-shadow--2dp  popupwindow1">
-             <h3 class="closepopupwindow1" style="float: left; font-size: 30px; margin-left: 20px; cursor: pointer;">✖</h3>
-             <h2 style="text-align: center;">selecteer een filter</h2>
-              <div class="scrolldifi">
-                  <ul style="list-style: none;  width: 100%;    height: auto; overflow: visible; margin-left: -29px;">
-                  <li class="btnround" style="width: auto; height: auto; padding: 12px 15px; float: left; cursor: pointer;" data-filter="all"> <span> alles weergeven</span></li>
-                   <?php $ticketing = new ticketing();
-                   $ticketing->getsubjects(); ?>
-                  </ul>
-             </div>
-           </div>
+
 
          </div>
        </main>
