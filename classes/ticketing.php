@@ -616,7 +616,7 @@ class ticketing
 
   public function getallfromkoppeling($uid)
   {
-    $data = $this->_db->get('ticket_koppelingen', array('user_id', '=', $uid));
+    $data = $this->_db->get('ticket_koppelingen', array('User_ID', '=', $uid));
     // print_r($data->results());
     $counter = 0;
     if ($data->count() !== 0) {
@@ -661,7 +661,7 @@ class ticketing
 
   public function getallfromkoppelingverborgen($uid)
   {
-    $data = $this->_db->get('ticket_koppelingen', array('user_id', '=', $uid));
+    $data = $this->_db->get('ticket_koppelingen', array('User_ID', '=', $uid));
     // print_r($data->results());
     $counter = 0;
     if ($data->count() !== 0) {
@@ -711,7 +711,7 @@ class ticketing
     $countchecker = 0;
     if ($data->count() !== 0) {
       foreach ($data->results() as $key) {
-        if ($key->user_id == $uid) {
+        if ($key->User_ID == $uid) {
           $countchecker++;
         }
       }

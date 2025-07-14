@@ -11,7 +11,14 @@ if ($uid != "") {
   if ($user->isloggedin()) {
     if ($user->data()->Groupnum == 1) {
       echo $tid . $uid;
-      if ($ticketing->checkkoppeling($tid, $uid)) {
+      $check = false;
+      try{
+       $check = $ticketing->checkkoppeling($tid, $uid);
+      } catch (Exception $e) {
+        echo $e->getMessage();
+      }
+
+      if ($check) {
         //aanmaken notificatie
         $content = "u bent gekoppeld aan ticket: <a href='ticketview.php?ticketid=" . $tid . "'> " . $tid . "</a>";
 
