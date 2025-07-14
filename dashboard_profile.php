@@ -11,7 +11,7 @@ ini_set('display_errors', 1);
     $user = new user();
     $notifyer = new notify();
     $ticketing = new ticketing;
-        $settinghandler = new settinghandler();
+    $settinghandler = new settinghandler();
     if ($user->isloggedin()) {
         ?>
  <!DOCTYPE html>
@@ -81,7 +81,9 @@ ini_set('display_errors', 1);
 
 
 
-                       <?phpif ($ustatus == 1) { include "includes/components/notifydrawer.php";} ?>
+                       <?php if ($ustatus == 1) {
+                        include_once "includes/components/notifydrawer.php";
+                        } ?>
 
 
 

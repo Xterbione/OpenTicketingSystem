@@ -4,7 +4,9 @@
     $ticket = new ticketing();
     $user = new user();
     $settinghandler = new settinghandler();
-      if ($user->isloggedin()) {
+    $dbError = '';
+    $exceptionError = '';
+if ($user->isloggedin()) {
  ?>
 
 
@@ -94,7 +96,26 @@
 </button></a>
 <div style="text-align: left;">
 
-     <?php $ticket->getallfromusernoarchive($uid); ?>
+     <?php 
+        try {
+            $ticket->getallfromusernoarchive($uid);
+        } catch (Throwable $e) {
+            // Show error message and DB error if available
+            echo '<div style="color: red; border: 2px solid red; padding: 10px; margin: 10px 0; background: #fff0f0;">';
+            echo '<strong>Exception:</strong> ' . htmlspecialchars($e->getMessage()) . '<br>';
+            if (class_exists('db')) {
+                $db = db::getInstance();
+                if (method_exists($db, 'errorMessage')) {
+                    $dbMsg = $db->errorMessage();
+                    if ($dbMsg) {
+                        echo '<strong>DB Error:</strong> ' . htmlspecialchars($dbMsg) . '<br>';
+                    }
+                }
+            }
+            echo '<pre>' . htmlspecialchars($e->getTraceAsString()) . '</pre>';
+            echo '</div>';
+        }
+?>
    </div>
  </div>
 

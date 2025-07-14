@@ -4,7 +4,7 @@
     $notifyer = new notify();
     $user = new user();
     $ticketing = new ticketing();
-      $file = new File();
+    $file = new File();
     $ustatus = $user->data()->Groupnum;
         $settinghandler = new settinghandler();
     if ($user->isloggedin()) {
@@ -23,13 +23,13 @@
      <link rel="stylesheet" href="css/material-extends.css">
    </head>
    <body>
-     <div class="loader" style="height: 100%; width: 100%; background: white; position: absolute; z-index: 999; text-align: center; ">
+     <!-- <div class="loader" style="height: 100%; width: 100%; background: white; position: absolute; z-index: 999; text-align: center; ">
        <img src="icons/brainlogo.png" class="brainlogoload" style="" alt="">
        <div class="loadercomponent" style="text-aling:center;margin: 0 auto; width: 500px; margin-top: 25%;">
          <p>loading...</p>
          <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
        </div>
-     </div>
+     </div> -->
 
      <!-- menu div -->
      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">

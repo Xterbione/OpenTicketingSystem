@@ -35,6 +35,24 @@ class settinghandler {
              }
          }
 
+        public function GetMailEnabled()
+         {
+             $data = $this->_db->get('settings', array('SettingName', '=', 'MailEnabled'));
+             // print_r($data->results());
+             if ($data->count() !== 0) {
+                 foreach ($data->results() as $key) {
+                     if ($key->SettingValue == '1'){
+                        return true;
+                     }
+                     else {
+                        return false;
+                     }
+                 }
+             } else {
+                return false;
+             }
+         }
+
          public function GetMailSMTPauthentication()
          {
              $data = $this->_db->get('settings', array('SettingName', '=', 'MailSMTPauthentication'));

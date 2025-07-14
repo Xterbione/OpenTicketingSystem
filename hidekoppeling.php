@@ -13,10 +13,11 @@ if ($user->isloggedin()){
   echo "stage 1" . '<br>';
   if ($user->data()->Groupnum == 1) {
     echo "stage 2".'<br>';
+    echo 'kid:'. $kid .'| uid:' . $uid;
     if ($ticketing->checkkoppelingowner($kid, $uid)) {
-      echo "stage 3";
+      echo "stage 3 </br>";
       $ticketing->hidekoppeling($kid);
-      echo "stage 4";
+      echo "stage 4 </br>";
       session::setflash('melding','koppeling verborgen');
       redirect::to('dashboard_koppelingen.php');
     }
