@@ -7,7 +7,7 @@ return array(
     'host'=> '127.0.0.1',
     'username' => 'root',
     'password' => 'usbw',
-    'db' => 'DatabaseWebApp'
+    'db' => 'databasewebapp'
   ),
   'remember' => array(
     'cookie_name' => 'hash',

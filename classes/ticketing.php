@@ -304,9 +304,9 @@ class ticketing
   public function viewcommentsbyid($tid)
   {
     $files = new File();
+    $currentUser = new User();  // veronderstel dat je User class zo gebruikt
     $data = $this->_db->get('ticket_comments', array('Ticket_ID', '=', $tid));
     // print_r($data->results());
-
     if ($data->count() !== 0) {
       foreach ($data->results() as $key) {
         $creatorid = $key->User_ID;
@@ -329,6 +329,14 @@ class ticketing
           <hr></hr>
           <p style='float:right;'>" . htmlspecialchars($key->PostDatum, ENT_QUOTES) . "</p>
         ";
+        if ($currentUser->data()->User_ID == $creatorid) {
+          echo "
+                <form method='POST' action='/deletecomment.php' onsubmit='return confirm(\"Weet je zeker dat je deze reactie wilt verwijderen?\");'>
+                    <input type='hidden' name='delete_comment_id' value='" . htmlspecialchars($key->Comment_ID, ENT_QUOTES) . "' />
+                    <input type='submit' class='mdl-button mdl-js-button mdl-button--raised mdl-button--accent' value='verwijderen?'/>
+                </form>";
+        }
+
         if ($key->kennisitem_id !== '0') {
           echo "<p> gekoppelde Items:<br>";
           $files->getticketitemkoppeling($key->kennisitem_id);
@@ -345,25 +353,49 @@ class ticketing
     }
   }
 
+  public function checkCommentOwner($comment_id, $user_id)
+  {
+    $data = $this->_db->get('ticket_comments', array('Comment_ID', '=', $comment_id));
+    if ($data->count() !== 0) {
+      foreach ($data->results() as $comment) {
+        if ($comment->User_ID == $user_id) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
 
+
+  public function deleteComment($comment_id, $user_id)
+  {
+    if ($this->checkCommentOwner($comment_id, $user_id)) {
+      if (!$this->_db->delete('ticket_comments', array('Comment_ID', '=', $comment_id))) {
+        throw new Exception('De reactie kon niet verwijderd worden.');
+      }
+      return true;
+    } else {
+      throw new Exception('Geen toestemming om deze reactie te verwijderen.');
+    }
+  }
 
 
 
   public function createcomment($fields = array())
   {
-  try {
+    try {
       $result = $this->_db->insert('Ticket_Comments', $fields);
       if ($result == false) {
         throw new Exception('');
       }
-      } catch (Exception $e) {
-          echo "error" . $e->getMessage();
-          echo "</br>" . $e->getMessage();
-          echo "</br><strong>Vardump van \$fields:</strong><pre>";
-          print_r($fields);
-          echo "</pre>";
-          throw new Exception("");
-      }
+    } catch (Exception $e) {
+      echo "error" . $e->getMessage();
+      echo "</br>" . $e->getMessage();
+      echo "</br><strong>Vardump van \$fields:</strong><pre>";
+      print_r($fields);
+      echo "</pre>";
+      throw new Exception("");
+    }
   }
 
 
@@ -590,7 +622,7 @@ class ticketing
     if ($data->count() !== 0) {
       foreach ($data->results() as $key_first) {
         $tid = $key_first->Ticket_ID;
-        $koppel_ID = $key_first->	koppel_ID;
+        $koppel_ID = $key_first->koppel_ID;
         if ($key_first->hide == 0) {
 
           $data2 = $this->_db->get('tickets', array('Ticket_ID', '=', $tid));
@@ -629,7 +661,7 @@ class ticketing
 
   public function getallfromkoppelingverborgen($uid)
   {
-    $data = $this->_db->get( 'ticket_koppelingen', array('user_id', '=', $uid));
+    $data = $this->_db->get('ticket_koppelingen', array('user_id', '=', $uid));
     // print_r($data->results());
     $counter = 0;
     if ($data->count() !== 0) {
