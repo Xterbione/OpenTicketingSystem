@@ -319,7 +319,7 @@ CREATE TABLE `Users` (
 INSERT INTO `Users` (`User_ID`, `UserName`, `name`, `MailAddress`, `password`, `salt`, `Groupnum`, `DateOfCreation`, `mailme`) VALUES
 (12, 'root', 'bryan koolman', 'bryan_k_@hotmail.com', '42ac502fc0b4ed3d3a679184c165aca090983ec51ff56505dec067621efbb472', 'Ã‘ÃšÃÃ½Â•Ã§ÂªÃ„bÃ†Ã™xÂªÂ½ÃŽRÃ‚Â—8Ã°.Â¾%iWÃŒÃ®Ã‘Âˆ', 1, '2018-02-22 12:13:11', 1),
 (13, 'lol', 'lol depro', 'lol@gmail.com', '3c38e4ad7f74b2f54380556ffa2cc688ff5fd769387ed289410d2bd5e42946d6', '@Â»bÂ©Ã•ÃŸKOÂ‡Ã½1DÂœodÃ•82Ã¸Â©@;oÃŸÂ·JÃ³MÂm', 0, '2018-02-23 10:03:39', 1),
-(14, 'Silviahidding', 'Silvia hidding', 'marketing@brainconsultant.nl', '4707fee50f17a5dc424749c22e1e094c1a5a301e73f3eb59632200fc09a61b33', 'Âž\"IMÂ»,Ã“GI]vÂ¦Â¹Ã»ÂŠÃ¼Âƒ\' Â›	Â²Ã²Â±7yVÃº', 1, '2018-02-28 14:15:02', 1),
+(14, 'Silviahidding', 'Silvia hidding', 'marketing@Pink Company.nl', '4707fee50f17a5dc424749c22e1e094c1a5a301e73f3eb59632200fc09a61b33', 'Âž\"IMÂ»,Ã“GI]vÂ¦Â¹Ã»ÂŠÃ¼Âƒ\' Â›	Â²Ã²Â±7yVÃº', 1, '2018-02-28 14:15:02', 1),
 (15, 'markdepro', 'markdepro', 'aa@a.a', '40fb453dc40092e663dea6db08e5d856e273bd3ba6e51837dad294feba2f8072', 'Ã¿Â¿Â’Â™ÂµÂŒÃ®Â¦Âš1dÃ»/Ã¥Ã§Ã¨Ã€Ã‰qb=ÂªÃ¯/D<Ã¹qÃ…Ã©', 0, '2018-03-02 09:50:02', 1),
 (16, 'Yorick', 'Yorick Schoel', 'Yorickschoel1@gmail.com', '2fe81d417f6edc854f844ceea733656eca563f649f6aa2df42d133aaf8126fb2', '/Â›Â™Ã°#Â…Ã¯ÃÂ»Ã…Â®Â¸Â¾)Â˜ÃÂŠXÂ«MÃ²{Â´H\0s', 0, '2018-03-05 10:15:01', 1),
 (17, 'testgebruiker', 'deze man', 'testgebruiker@example.com', '5422004c598856c6fd9fb4f0bccf574efa467508963f83d8ac3f05aef7e47b2c', 'ÃƒÂ™Ã˜RÂŸ_Ã“Â›6\"ÂºÂš0XÂ Â¼!ÂŠ;HÂ`Ã¨Ãƒ>Ã‚O5Ã”Â¬', 0, '2018-03-05 14:54:38', 1),
@@ -327,7 +327,7 @@ INSERT INTO `Users` (`User_ID`, `UserName`, `name`, `MailAddress`, `password`, `
 (19, 'lol2', 'lol depro', 'bryan_K_@hotmail.com', '20a010dd65ce64c0e3bbb26a0f3b8fde3d3a5f9be524680833dfb887652aa797', 'Â–^$Ã¥^jÂ›Ã½g<Â”]Â´Ã½Ã—Ã¢?Â…ÂŒÃ¦E32xÂ¼WÂ·:G', 0, '2018-02-23 10:03:39', 1),
 (20, 'lol3', 'lol depro', 'bryan_K_@hotmail.com', 'eca29402b47c47dd15e5bac7b5c320d812495cec0d051978106c4a53da98d09b', 'XÂ—Âª{Â¾Ã‘#VÂ„?@Ã‹2@*Ã¥Ã„Â™\r\nN&$o)hYÃ”Â—', 0, '2018-02-23 10:03:39', 1),
 (21, 'lol4', 'lol depro', 'bryan_K_@hotmail.com', 'eca29402b47c47dd15e5bac7b5c320d812495cec0d051978106c4a53da98d09b', 'XÂ—Âª{Â¾Ã‘#VÂ„?@Ã‹2@*Ã¥Ã„Â™\r\nN&$o)hYÃ”Â—', 0, '2018-02-23 10:03:39', 1),
-(22, 'Olaf', 'Olaf Pomp', 'olaf.pomp@brainconsultant.nl', '71848b297d70db1d203ec9af51a764383bb06545a147070e5aefce92a8762498', '^)5Â³Ã±Ã·&:CÃ^\r\rZ\0^ÂˆuÂ1Â³Ãž	Ã”Ã´Â†pÃ¡', 1, '2018-03-07 12:05:41', 1),
+(22, 'Olaf', 'Olaf Pomp', 'olaf.pomp@Pink Company.nl', '71848b297d70db1d203ec9af51a764383bb06545a147070e5aefce92a8762498', '^)5Â³Ã±Ã·&:CÃ^\r\rZ\0^ÂˆuÂ1Â³Ãž	Ã”Ã´Â†pÃ¡', 1, '2018-03-07 12:05:41', 1),
 (23, 'testmaster', 'test master', 'bryan_k_@hotmail.com', 'c9fc1f84a57a72dbd49dc0cecc92a8b7b3c4df575c73fecb159c656ad91a4153', 'Â¤Â†Ã¹Ã¡Â³;ÃÂœ}dÃ¹_Â\ZÃ„\ZÂ—Â½VÃ‚Ã–dÂŠI\ZÃ(Ã‡', 0, '2018-03-07 12:07:05', 1),
 (24, 'Kees', 'Kees Kaas', 'bryan_K_@hotmail.com', '617db280286797dce3cb8d2f77022e270bb823c30a8ddcd3de817150c424a4fd', 'Â»vÂš:=Ã³&Ã’BD\rÃ–ox`/LÂšÃÂ•ÃŽÂŒÂ<lP$Ã­Ã™MÂ‹Â¾', 1, '2018-03-07 12:08:04', 1),
 (25, 'normaal', 'paul normaal', 'bryan_K_@hotmail.com', 'e6cbb3080916e5c476dbf68bae90b6a442f8404bb2e842c90db8e71d17694a0e', 'Â¸Â¶FSÃ£qÂ™Âª5Â©Â¢#Â›}Â¦ÂžÂ³\rÂ‰ÂŽ.Ã‚Â™Â²Ã¸Ã©7rÂ›1', 0, '2018-03-07 14:27:40', 1),

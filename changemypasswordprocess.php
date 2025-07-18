@@ -21,7 +21,7 @@ if ($validate->passed()) {
   if ($user->isloggedin()) {
   $mailto = $user->data()->MailAddress;
   $mailsub = 'wachtwoord gewijzicht';
-  $mailmessage = "Beste ". $user->data()->name ."<br>uw wachtwoord voor BrainConsultant ticketing system is gewijzicht naar: ". $passwordraw ."<br> uw gebruikersnaam is: ". $user->data()->UserName ."<br> met deze gegevens kunt u inloggen bij brainconsultant ticketing system.";
+  $mailmessage = "Beste ". $user->data()->name ."<br>uw wachtwoord voor Pink Company ticketing system is gewijzicht naar: ". $passwordraw ."<br> uw gebruikersnaam is: ". $user->data()->UserName ."<br> met deze gegevens kunt u inloggen bij Pink Company ticketing system.";
   $user->changepass($uidedit, $passwordraw);  
   sendmail($mailto, $mailsub, $mailmessage);
   redirect::to('dashboard_gebruikers.php');

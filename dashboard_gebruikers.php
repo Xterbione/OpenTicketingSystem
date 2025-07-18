@@ -31,7 +31,7 @@
  <html style="margin: 0;">
    <head>
      <meta charset="utf-8">
-     <title>Brainconsultant - ticketing system</title>
+     <title>Pink Company - ticketing system</title>
      <link rel="stylesheet" href="css/material.min.css">
      <script src="script/material.min.js"></script>
      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -98,7 +98,7 @@
             <table style="overflow-x: scroll;" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp usertable">
 
               <thead>
-                <tr  class="clickable-row" data-href='url://Brainconsultant.nl'>
+                <tr  class="clickable-row" data-href='url://Pink Company.nl'>
                   <th></th>
                   <th class="mdl-data-table__cell--non-numeric">Mail adres</th>
                   <th class="mdl-data-table__cell--non-numeric">Gebruikersnaam</th>

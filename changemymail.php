@@ -13,7 +13,7 @@ $validate = new validate();
     if(filter_var($newmail, FILTER_VALIDATE_EMAIL)) {
       $mailto = $user->data()->MailAddress;
       $mailsub = 'mail gewijzicht';
-      $mailmessage = "Beste ". $user->data()->name ."<br>uw Mailaddress voor BrainConsultant ticketing system is gewijzicht naar: ". $newmail ."<br> uw gebruikersnaam is: ". $user->data()->UserName ."<br> met deze gegevens kunt u inloggen bij brainconsultant ticketing system.";
+      $mailmessage = "Beste ". $user->data()->name ."<br>uw Mailaddress voor Pink Company ticketing system is gewijzicht naar: ". $newmail ."<br> uw gebruikersnaam is: ". $user->data()->UserName ."<br> met deze gegevens kunt u inloggen bij Pink Company ticketing system.";
       sendmail($mailto, $mailsub, $mailmessage);
       $user->changemail($uidedit, $newmail);
       session::setflash('melding','geslaagd');

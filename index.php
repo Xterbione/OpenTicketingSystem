@@ -5,7 +5,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>ticketing systeem - BrainConsultant</title>
+    <title>ticketing systeem - Pink Company</title>
       <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/material.min.css">

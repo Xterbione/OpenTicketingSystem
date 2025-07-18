@@ -30,7 +30,7 @@
  <html style="margin: 0;">
    <head>
      <meta charset="utf-8">
-     <title>Brainconsultant - ticketing system</title>
+     <title>Pink Company - ticketing system</title>
      <link rel="stylesheet" href="css/material.min.css">
      <script src="script/material.min.js"></script>
      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -52,7 +52,7 @@
        <header class="mdl-layout__header">
          <div class="mdl-layout__header-row">
            <!-- Title -->
-           <span class="mdl-layout-title" >Brainconsultant T.S.</span>
+           <span class="mdl-layout-title" >Pink Company T.S.</span>
            <!-- Add spacer, to align navigation to the right -->
            <div class="mdl-layout-spacer"></div>
            <!-- Navigation. We hide it in small screens. -->
@@ -98,7 +98,7 @@
             <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp usertable">
 
               <thead>
-                <tr class="clickable-row" data-href='url://Brainconsultant.nl'>
+                <tr class="clickable-row" data-href='url://Pink Company.nl'>
                   <th></th>
                   <th class="mdl-data-table__cell--non-numeric">Ticket ID</th>
                   <th class="mdl-data-table__cell--non-numeric">Categorie</th>

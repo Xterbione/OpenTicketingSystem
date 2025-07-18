@@ -12,7 +12,7 @@ if ($user->data()->Groupnum == 1) {
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Brainconsultant - ticketing system</title>
+  <title>Pink Company - ticketing system</title>
   <link rel="stylesheet" href="css/material.min.css">
   <script src="script/material.min.js"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">

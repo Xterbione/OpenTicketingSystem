@@ -36,14 +36,14 @@
  <html>
    <head>
      <meta charset="utf-8">
-     <title>Brainconsultant - ticketing system</title>
+     <title>Pink Company - ticketing system</title>
      <script src="script/material.min.js"></script>
      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
      <link rel="stylesheet" href="css/material.min.css">
      <link rel="stylesheet" href="<?php echo $settinghandler->GetMenuCustom(); ?>" />
      <link rel="stylesheet" href="css/material-extends.css">
      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-     <meta property="og:image" content="https://www.brainconsultant.nl/wp-content/uploads/2016/11/favicon.png">
+     <meta property="og:image" content="https://www.Pink Company.nl/wp-content/uploads/2016/11/favicon.png">
          <link rel="shortcut icon" type="image/png" href="icons/favicon.png"/>
      <script type="text/javascript">
          // Load Charts and the corechart and barchart packages.

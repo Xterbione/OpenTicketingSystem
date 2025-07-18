@@ -1,2 +1,2 @@
 
-<br><br> <p> met viendelijke groet,<br> BrainConsultant </p>
+<br><br> <p> met viendelijke groet,<br> Pink Company </p>
